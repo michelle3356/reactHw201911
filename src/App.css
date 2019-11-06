@@ -2,21 +2,18 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.App button {
+  height: 50px;
+  width: 150px;
+  border:0;
+  background-color:#002d76;
+  color:#fff;
+  border-radius:10px;
+  cursor:pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+.App button:hover{
+  color:#fff;
+  background-color:#0488c6;
+  border:2px #0488c6 solid;
 }
