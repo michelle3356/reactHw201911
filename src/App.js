@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import HwOneTimer from './HwOneTimer';
+import HwTwoTimerList from './HwTwoTimerList';
 
 function App() {
   return (
     <div className="App">
-      <HwOneTimer />
+      <HwTwoTimerList />
     </div>
   );
 }
