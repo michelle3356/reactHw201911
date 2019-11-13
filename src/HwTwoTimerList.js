@@ -31,7 +31,7 @@ export default class HwTwoTimerList extends Component {
         <button value="submit" onClick={this.handleClick}>Submit</button>
           <ul>
             {this.state.list.map(item=>
-            <li>{item}</li>
+            <li key={item}>{item}</li>
             )}
           </ul>
       </div>
