@@ -3,27 +3,30 @@ import React, { Component } from 'react'
 export default class HwTwoTimerList extends Component {
   constructor(props){
     super(props);
-    this.state = {number: 1};
-    this.list =[];
-    const list = this.number.map((number) =>
-     <li>{number}</li>
-    );
+    this.state = {
+      number: 1,
+      list:[]
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   handleSubmit = (event) => {
     this.setState({
-      number : this.state.number + 1
+      number : this.state.number + 1,
+      list: this.number.push()
     })
+    console.log(this)
     event.preventDefault();
   };
-/* <li>{this.state.number}</li> */
   render() {
     return (
       <div>
         <h1>HW2CounterList</h1>
-        <button value="submit" onSubmit={this.handleSubmit}></button>
+        <button value="submit" onSubmit={this.handleSubmit}>Submit</button>
           <ul>
-            {this.number}
+            {this.state.list.map(item=>
+            <li>{item}</li>
+            )}
           </ul>
       </div>
     )
