@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import HwTwoTimerList from './HwTwoTimerList';
+import HwThreeAddList from './HwThreeAddList';
 
 function App() {
   return (
     <div className="App">
-      <HwTwoTimerList />
+      <HwThreeAddList />
     </div>
   );
 }
