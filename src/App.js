@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import HwThreeAddList from './HwThreeAddList';
+import HwFourBMI from './HwFourBMI';
 
 function App() {
   return (
     <div className="App">
-      <HwThreeAddList />
+      <HwFourBMI />
     </div>
   );
 }
