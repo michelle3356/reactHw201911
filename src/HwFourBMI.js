@@ -4,7 +4,8 @@ export default class HwFourBMI extends Component {
   constructor(props){
     super(props);
     this.state={
-      value:''
+      value:'',
+      bmiValue:''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,6 +25,7 @@ export default class HwFourBMI extends Component {
     event.preventDefault();
   }
   render() {
+    const bmiValue = this.state.weight/(this.state.height*this.state.height);
     return (
       <div>
         <h1>BMI 計算公式: 體重(公斤) / 身高(公尺) 的 2次方</h1>
@@ -43,7 +45,7 @@ export default class HwFourBMI extends Component {
           <br />
           <input type="submit" value="calculate" />
         </form>
-        <label>BMI:</label>
+        <label>BMI:{bmiValue}</label>
       </div>
     )
   }
