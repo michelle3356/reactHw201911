@@ -11,6 +11,9 @@ constructor(props){
   this.handleChange = this.handleChange.bind(this);
 }
 
+/**
+ * onChange 應該只改動 value，list 不會改變
+ */
 handleChange = (event) => {
   const target = event.target;
   const value = target.value;
@@ -21,6 +24,11 @@ handleChange = (event) => {
     list: list
   })
 }
+
+  /**
+   * list 應該在 form submit 時才會新增進去，
+   * 但完全沒看到你的 form 在哪裡
+   */
 
   render() {
     return (

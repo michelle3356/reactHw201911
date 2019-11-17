@@ -5,7 +5,7 @@ export default class HwFourBMI extends Component {
     super(props);
     this.state={
       value:'',
-      bmiValue:''
+      bmiValue:'',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,6 +25,10 @@ export default class HwFourBMI extends Component {
     event.preventDefault();
   }
   render() {
+    /**
+     * 妳的 BMI 計算公式寫錯了，我都寫在題目上了 = =
+     * 而且也不應該在這邊算，我的做法明明就是在按下按鈕時才算
+     */
     const bmiValue = this.state.weight/(this.state.height*this.state.height);
     return (
       <div>
@@ -35,6 +39,7 @@ export default class HwFourBMI extends Component {
             name="height"
             value={this.state.height} 
             onChange={this.handleChange}/>cm
+            {/* 妳的 value 綁定了 this.state.height 但你在 constructor 沒有定義 height? */}
           </label>
           <br/>
           <label>體重:
