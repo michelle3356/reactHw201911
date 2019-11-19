@@ -52,7 +52,7 @@ export default class HwFourBMI extends Component {
           <input type="text"
           name="weight"
           value={this.state.weight}
-          //onChange={this.handleChange} 
+          onChange={this.handleChange} 
           /></label>kg
           <br />
           <input type="submit" value="calculate" />
