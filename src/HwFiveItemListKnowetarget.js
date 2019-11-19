@@ -6,9 +6,9 @@ constructor(props){
   this.state = {
     value:"",
     list:[]
-
   };
   this.handleChange = this.handleChange.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
 }
 
 /**
@@ -17,12 +17,18 @@ constructor(props){
 handleChange = (event) => {
   const target = event.target;
   const value = target.value;
-  const list = this.state.list;
-  list.push(this.state.value)
   this.setState({
-    value: value,
-    list: list
+    value: value
   })
+}
+
+handleSubmit = (event) =>{
+  event.preventDefault();
+  const list = this.state.list;
+  list.push(this.state.value);
+  this.setState({
+    list:list
+  });
 }
 
   /**
@@ -38,10 +44,10 @@ handleChange = (event) => {
           <br/>並且會把原本的輸入格清空
           <br/>若使用者輸入空白或沒輸入則不能新增
         </span>
-        <div>
+        <form onSubmit={this.handleSubmit}>
           <input type="text" 
           name="number"
-          value={this.state.number}
+          value={this.state.value}
           onChange={this.handleChange}
           />
           <ul>
@@ -49,7 +55,7 @@ handleChange = (event) => {
             <li key={item.index}>{item}</li>
             )}
           </ul>
-        </div>
+        </form>
       </div>
     )
   }
