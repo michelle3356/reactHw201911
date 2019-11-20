@@ -4,7 +4,7 @@ export default class HwFourBMI extends Component {
   constructor(props){
     super(props);
     this.state={
-      value:'',
+      weight:'',
       height:'',
       bmiValue:'',
     };
