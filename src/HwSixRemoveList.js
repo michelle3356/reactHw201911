@@ -7,16 +7,20 @@ export default class HwSixRemoveList extends Component {
       value:"",
       list:[]
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
+    //可以簡寫成const {list,value} = this.state
     const list = this.state.list;
-    list.push(this.state.value);
+    const value = this.state.value;
+    if(value !== '' && value.trim() !== '')
     this.setState({
-      list:list
+      //unshift加在陣列最前面,等於list.unshift(this.state.value)
+      list: [value, ...list],
+      value: ''
     })
   };
 
@@ -28,16 +32,20 @@ export default class HwSixRemoveList extends Component {
   };
 
   handleClick = (index) => {
-      var filterEmpty = this.state.list.filter(function(filterList, idx, array){
-        if(filterList.idx !== index) return filterList;
-      })
+      var filterEmpty = this.state.list.filter((value, index1) =>
+        index !== index1
+      )
     this.setState({
       list: filterEmpty
-    })
-
+    });
   }
 
   render() {
+    const liList = this.state.list.map((item,index)=>
+      <li key={index}>{item}
+        <button onClick={this.handleClick.bind(this, index)}>remove</button>
+      </li>
+      )
     return (
       <div>
         <h1>可移除的清單</h1>
@@ -49,11 +57,7 @@ export default class HwSixRemoveList extends Component {
           onChange={this.handleChange}
           />
           <ul>
-            {this.state.list.map((item,index)=>
-            <li key={index}>{item}
-              <button onClick={this.handleClick.bind(this, index)}>remove</button>
-            </li>
-            )}
+            {liList}
           </ul>
         </form>
       </div>
