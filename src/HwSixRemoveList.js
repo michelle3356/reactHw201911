@@ -4,11 +4,39 @@ export default class HwSixRemoveList extends Component {
   constructor(props){
     super(props);
     this.state ={
-
+      value:"",
+      list:[]
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   };
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const list = this.state.list;
+    list.push(this.state.value);
+    this.setState({
+      list:list
+    })
+  };
 
+  handleChange = (event) => {
+    const value = event.target.value;
+    this.setState({
+      value: value
+    })
+  };
+
+  handleClick = (event) => {
+      var filterEmpty = this.state.list.filter(function(item, index, array){
+        return index;
+      })
+    this.setState({
+      list: filterEmpty
+    })
+
+  }
 
   render() {
     return (
@@ -18,15 +46,17 @@ export default class HwSixRemoveList extends Component {
         <form onSubmit={this.handleSubmit}>
           <input type="text"
           name="number" 
-          value={this.state.input}
+          value={this.state.value}
           onChange={this.handleChange}
           />
           <ul>
-            
+            {this.state.list.map(item=>
+            <li key={item.index}>{item}
+              <button onClick={this.handleClick}>remove</button>
+            </li>
+            )}
           </ul>
-
         </form>
-        
       </div>
     )
   }
