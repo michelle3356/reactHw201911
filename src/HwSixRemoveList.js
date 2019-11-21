@@ -9,7 +9,6 @@ export default class HwSixRemoveList extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   };
 
   handleSubmit = (event) => {
@@ -28,9 +27,9 @@ export default class HwSixRemoveList extends Component {
     })
   };
 
-  handleClick = (event) => {
-      var filterEmpty = this.state.list.filter(function(item, index, array){
-        return index;
+  handleClick = (index) => {
+      var filterEmpty = this.state.list.filter(function(filterList, idx, array){
+        if(filterList.idx !== index) return filterList;
       })
     this.setState({
       list: filterEmpty
@@ -50,9 +49,9 @@ export default class HwSixRemoveList extends Component {
           onChange={this.handleChange}
           />
           <ul>
-            {this.state.list.map(item=>
-            <li key={item.index}>{item}
-              <button onClick={this.handleClick}>remove</button>
+            {this.state.list.map((item,index)=>
+            <li key={index}>{item}
+              <button onClick={this.handleClick.bind(this, index)}>remove</button>
             </li>
             )}
           </ul>
