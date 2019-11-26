@@ -32,6 +32,7 @@ export default class HwSixRemoveList extends Component {
   };
 
   handleClick = (index) => {
+    /** 最好不要取 index1 這種名字 */
       var filterEmpty = this.state.list.filter((value, index1) =>
         index !== index1
       )
@@ -46,6 +47,10 @@ export default class HwSixRemoveList extends Component {
         <button onClick={this.handleClick.bind(this, index)}>remove</button>
       </li>
       )
+      /**
+       * 在 form 裡的任何 button 都會被視為 submit，所以你不應該把
+       * ul 包在 form 裡
+       */
     return (
       <div>
         <h1>可移除的清單</h1>
