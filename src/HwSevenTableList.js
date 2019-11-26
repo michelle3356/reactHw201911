@@ -9,6 +9,10 @@ export default class App extends Component {
   };
 
   handleClick = (event) =>{
+    /**
+     * 1. 應該是 this.state.list 而不是 this.setState.list
+     * 2. 你丟參數給 callApi, 但 callApi 沒有接任何東西？
+     */
     this.callApi(this.setState.list);
   };
 
@@ -18,6 +22,11 @@ export default class App extends Component {
       return res.json()
     .then(json =>{
       console.log(json.results)
+      /** 你應該是要在這邊 把 json.results setState 才對
+       * this.setState({
+       *  list: json.results
+       * })
+       */
       return json.results;
     })
     })
@@ -42,6 +51,7 @@ export default class App extends Component {
           </tr>
         </thead>
         <tbody>
+          {/* 你的 function 裡面要 return，使用箭頭函數而且只有一道命令才不用 return */}
           {this.state.list.map(function(user){
             <tr key={user.login.uuid}>
               <td><img src={user.picture.thumbnail} /></td>
