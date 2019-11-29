@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import HwSixRemoveList from './HwSixRemoveList';
+import HwSevenTableList from './HwSevenTableList';
 
 function App() {
   return (
     <div className="App">
-      <HwSixRemoveList />
+      <HwSevenTableList />
     </div>
   );
 }
