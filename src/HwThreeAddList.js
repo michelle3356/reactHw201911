@@ -9,31 +9,31 @@ export default class HwThreeAddList extends Component {
      */
     this.state={
       number: 0,
-      total:2
+      total: 0,
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   /**
    * 妳似乎沒用到 event，那就可以拿掉
+   * 沒有用到的event可以被省略-ｌｕｉ
    */
-  handleClick=(event)=>{
-    let number = this.state.number;
-
+  handleClick=()=>{
     /**
      * 這邊有一個非常錯誤的觀念，加總的動作只會把目前當下的 total 與 當下的 number 累加，然後再放進 total
      * 所以是不需要跑迴圈的
+     * 以下這個迴圈完全錯誤
+     * for(let i=0;i<this.state.total;i++){
+     *   number = number+i;
+     * }
      */
-    for(let i=0;i<this.state.total;i++){
-      number = number+i;
-    }
 
     /**
      * number 也放進 total? 不對吧？ 要放的應該是 舊total + number 才對吧？
      */
     this.setState({
-      number: number,
-      total:number
+      number: this.state.number + 1,
+      total: this.state.total + this.state.number,
     })
   }
   render() {
@@ -42,7 +42,7 @@ export default class HwThreeAddList extends Component {
         <h1>+1,+2...+n</h1>
         <button value="" onClick={this.handleClick}>Click number add</button>
         <ul>
-          {this.state.number}
+          {this.state.total}
         </ul>
       </div>
     )
