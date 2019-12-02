@@ -33,8 +33,8 @@ export default class HwSixRemoveList extends Component {
 
   handleClick = (index) => {
     /** 最好不要取 index1 這種名字 */
-      var filterEmpty = this.state.list.filter((value, index1) =>
-        index !== index1
+      var filterEmpty = this.state.list.filter((value, listIndex) =>
+        index !== listIndex
       )
     this.setState({
       list: filterEmpty
@@ -43,9 +43,11 @@ export default class HwSixRemoveList extends Component {
 
   render() {
     const liList = this.state.list.map((item,index)=>
-      <li key={index}>{item}
-        <button onClick={this.handleClick.bind(this, index)}>remove</button>
-      </li>
+      <ul>
+        <li key={index}>{item}
+          <button onClick={this.handleClick.bind(this, index)}>remove</button>
+        </li>
+      </ul>
       )
       /**
        * 在 form 裡的任何 button 都會被視為 submit，所以你不應該把
@@ -61,10 +63,8 @@ export default class HwSixRemoveList extends Component {
           value={this.state.value}
           onChange={this.handleChange}
           />
-          <ul>
-            {liList}
-          </ul>
         </form>
+            {liList}
       </div>
     )
   }
