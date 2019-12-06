@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import HwTenDollarsTrans from './HwTenDollarsTrans';
+import HomeWork from './HwTenDollarsTrans';
 
 function App() {
   return (
     <div className="App">
-      <HwTenDollarsTrans />
+      <HomeWork />
     </div>
   );
 }

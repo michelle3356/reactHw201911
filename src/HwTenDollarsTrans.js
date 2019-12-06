@@ -9,6 +9,15 @@ export default class HwTenDollarsTrans extends Component {
     }
   }
 
+  /** 你使用了以下2個function 卻沒定義，所以會出錯 */
+  handletoTWDChange = (value) => {
+    console.warn(value);
+  }
+
+  handletoUSDChange = (value) => {
+    console.warn(value);
+  }
+
   render() {
     const number = this.state.number;
     return (
