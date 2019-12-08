@@ -1,0 +1,9 @@
+div {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  
+}
+div > div:nth-child(6){
+  margin-left: 50%;
+}

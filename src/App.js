@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import HomeWork from './HwTenDollarsTrans';
+import HwElevenColorPadFather from './HwElevenColorPadFather';
 
 function App() {
   return (
     <div className="App">
-      <HomeWork />
+      <HwElevenColorPadFather />
     </div>
   );
 }
