@@ -1,28 +1,31 @@
-import React, { Component } from 'react'
-import './HwTwelveTabCss.css';
-import tab_content_1 from './HwTwelveTabCss.css';
-import tab_content_2 from './HwTwelveTabCss.css';
-import tab_content_3 from './HwTwelveTabCss.css';
+import React, { Component } from 'react';
+
+const contentList = [
+  '111111111111111111',
+  '222222222222222222',
+  '333333333333333333',
+];
 
 export default class HwTwelveTab extends Component {
-  handleClick = (e) => {
-    console.log(e.target)
+  constructor() {
+    super();
+    this.state = {
+      index: 0,
+    }
+  }
+  handleClick = (index) => {
+    this.setState({ index })
   }
   render() {
     return (
       <div>
-        <span id="tab_1">1</span>
-        <span id="tab_2">2</span>
-        <span id="tab_3">3</span>
         <div id="tab">
           <ul>
-            <li onClick={this.handleClick}><a href="#tab_1">tab1</a></li>
-            <li><a href="#tab_2">tab2</a></li>
-            <li><a href="#tab_3">tab3</a></li>
+            <li onClick={this.handleClick.bind(this, 0)}>tab1</li>
+            <li onClick={this.handleClick.bind(this, 1)}>tab2</li>
+            <li onClick={this.handleClick.bind(this, 2)}>tab3</li>
           </ul>
-          <div className={tab_content_1}><p>111111</p></div>
-          <div className={tab_content_2}><p>222222</p></div>
-          <div className={tab_content_3}><p>333333</p></div>
+          <div><p>{contentList[this.state.index]}</p></div>
         </div>
       </div>
       )
