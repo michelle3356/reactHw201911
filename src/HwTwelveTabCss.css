@@ -1,0 +1,91 @@
+span:target
+#tab_1:target,
+#tab_2:target,
+#tab_3:target{
+  border: solid 1px red;
+}
+/* 頁籤變換 */
+#tab_1:target ~ #tab > ul li a[href$="#tab_1"],
+#tab_2:target ~ #tab > ul li a[href$="#tab_2"],
+#tab_3:target ~ #tab > ul li a[href$="#tab_3"] {
+  border: solid 1px red;
+}
+
+/* 頁籤內容顯示 */
+#tab_1:target ~ #tab > div.tab_content_1,
+#tab_2:target ~ #tab > div.tab_content_2,
+#tab_3:target ~ #tab > div.tab_content_3 {
+  border: solid 1px red;
+}
+
+#tab{
+  width: 400px;
+  background: #1caa5d;
+  border: solid 1px #1caa5d;
+}
+/* 頁籤ul */
+#tab>ul{
+  overflow: hidden;
+  margin: 0;
+  padding: 10px 20px 0 20px;
+}
+#tab>ul>li{
+  list-style-type: none;
+}
+#tab>ul>li>a{
+  text-decoration: none;
+  font-size: 13px;
+  color: #333;
+  float: left;
+  padding: 10px;
+  margin-left: 5px;
+}
+/* 頁籤div內容 */
+#tab>div {
+  clear:both;
+  padding:0 15px;
+  height:0;
+  overflow:hidden;
+  visibility:hidden;
+  -webkit-transition:all .4s ease-in-out;
+  -moz-transition:all .4s ease-in-out;
+  -ms-transition:all .4s ease-in-out;
+  -o-transition:all .4s ease-in-out;
+  transition:all .4s ease-in-out;
+}
+
+/* span:target */
+#tab_1:target,
+#tab_2:target,
+#tab_3:target{
+  border: solid 1px red;
+}
+
+/* 第一筆的底色 */
+span:target ~ #tab > ul li:first-child a {
+  background:#1caa5d;
+}
+span:target ~ #tab > div:first-of-type {
+  visibility:hidden;
+  height:0;
+  padding:0 15px;
+}
+
+/* 頁籤變換&第一筆 */
+span ~ #tab > ul li:first-child a,
+#tab_1:target ~ #tab > ul li a[href$="#tab_1"],
+#tab_2:target ~ #tab > ul li a[href$="#tab_2"],
+#tab_3:target ~ #tab > ul li a[href$="#tab_3"] {
+  background: #fff;
+}
+
+/* 頁籤內容顯示&第一筆 */
+span ~ #tab > div:first-of-type,
+#tab_1:target ~ #tab > div.tab_content_1,
+#tab_2:target ~ #tab > div.tab_content_2,
+#tab_3:target ~ #tab > div.tab_content_3,
+#tab_4:target ~ #tab > div.tab_content_4 {
+  visibility:visible;
+  height:200px;
+  background: #fff;
+}

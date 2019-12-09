@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import HwElevenColorPadFather from './HwElevenColorPadFather';
+import HwTwelveTab from './HwTwelveTab';
 
 function App() {
   return (
     <div className="App">
-      <HwElevenColorPadFather />
+      <HwTwelveTab />
     </div>
   );
 }
