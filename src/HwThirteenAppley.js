@@ -18,7 +18,14 @@ export default class App extends Component {
   
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e)
+    // console.log(e)
+    const toDoList = this.state.toDoList;
+    const value = this.state.value;
+    if(value !== '' && value.trim() !== '')
+    this.setState({
+      toDoList: [value, ...toDoList],
+      value: ''
+    })
   };
   
   handleClick = (e) => {

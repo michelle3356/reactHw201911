@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import HwTwelveTab from './HwTwelveTab';
+import HwThirteenAppley from './HwThirteenAppley';
 
 function App() {
   return (
     <div className="App">
-      <HwTwelveTab />
+      <HwThirteenAppley />
     </div>
   );
 }
