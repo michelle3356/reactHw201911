@@ -11,14 +11,21 @@ export default class App extends Component {
         { id: Math.random(), content: '待辦事項1', done: false },
         { id: Math.random(), content: '待辦事項2', done: false },
         { id: Math.random(), content: '待辦事項3', done: true }
-      ]
+      ],
+      isShowDone: false
     };
   }
   
+  handleChange = (event) => {
+    const value = event.target.value;
+    this.setState({
+      value: value
+    })
+  }
   
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(e)
+    console.log(e)
     const toDoList = this.state.toDoList;
     const value = this.state.value;
     if(value !== '' && value.trim() !== '')
@@ -30,6 +37,10 @@ export default class App extends Component {
   
   handleClick = (e) => {
     console.warn(e)
+    console.warn(e.target)
+    this.setState({
+      isShowDone: e.target
+    })
   };
   
   render() {
@@ -43,7 +54,9 @@ export default class App extends Component {
       <div>
       <div>一開始你會有一個清單，內有3個項目，內容如下：</div>
       <form onSubmit={this.handleSubmit}>
-      <input type="text"/>
+      <input type="text"
+        onChange={this.handleChange}
+      />
       <button>submit</button>
       </form>
       {/* !!不要再把ul寫進去map裡面了!! */}
