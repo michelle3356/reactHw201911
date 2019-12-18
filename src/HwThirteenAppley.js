@@ -14,31 +14,35 @@ export default class App extends Component {
     };
   }
   
-  handleChange = (event) => {
-    const value = event.target.value;
-    this.setState({
-      value: value
-    })
+  handleChange = ({ target: { value } }) => {
+    this.setState({ value })
   }
   
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e)
-    const toDoListdata = this.state.toDoListdata;
+    const { toDoListdata } = this.state;
     const value = this.state.value;
     if(value !== '' && value.trim() !== '')
     this.setState({
-      toDoListdata: [{id: Math.random(), content: value, done: false}, ...toDoListdata],
+      toDoListdata: [{
+        id: Math.random(),
+        content: value,
+        done: false,
+      }, ...toDoListdata],
       value: ''
     })
   };
-  
+  /**
+   * 提示: 應取得點擊之 index
+   * 然後去修改 state.toDoListdata 裡對應項目的 done
+   * 然後再把 toDoListdata setState 回去。
+   */
   handleClick = (targetIndex) => {
     console.warn(targetIndex)
     var clickList = this.state.toDoListdata.map((item, index) =>
-        console.log(item, index)
+        // console.log(item, index)
         // console.log(item.done)
-        // targetIndex === index  !(item.done)
+        // targetIndex === index  !(item.done) 
       )
     this.setState({
       toDoListdata: clickList
