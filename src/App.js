@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Homework from './Hw13Appley';
+import Homework from './Hw14Pokemon';
 
 function App() {
   return (
