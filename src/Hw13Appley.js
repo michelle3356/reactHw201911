@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './HwThirteenAppley.css';
+import './Hw13Appley.css';
 
 export default class App extends Component {
   constructor(props){
