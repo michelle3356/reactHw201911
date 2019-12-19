@@ -38,14 +38,14 @@ export default class App extends Component {
    * 然後再把 toDoListdata setState 回去。
    */
   handleClick = (targetIndex) => {
-    console.warn(targetIndex)
-    var clickList = this.state.toDoListdata.map((item, index) =>
-        // console.log(item, index)
-        // console.log(item.done)
-        // targetIndex === index  !(item.done) 
-      )
+    const list = this.state.toDoListdata
+    if(list[targetIndex].done){
+      list[targetIndex].done = false;
+    }else{
+      list[targetIndex].done = true;
+    }
     this.setState({
-      toDoListdata: clickList
+      toDoListdata: list
     })
   };
   
