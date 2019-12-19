@@ -38,6 +38,10 @@ export default class App extends Component {
    * 然後再把 toDoListdata setState 回去。
    */
   handleClick = (targetIndex) => {
+    // 這裡傳入的index即是點擊當下所指定的項目的index，因此可以直接以此index找項目中所要取得的項目
+    // arr = ['a', 'b', 'c'];是陣列
+    // arr = [obj, obj, obj];也是陣列
+
     const list = this.state.toDoListdata
     if(list[targetIndex].done){
       list[targetIndex].done = false;

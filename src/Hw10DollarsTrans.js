@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import HwTenDollarsTransSon from './HwTenDollarsTransSon.js';
+import HwTenDollarsTransSon from './Hw10DollarsTransSon.js/index.js';
 
 export default class HwTenDollarsTrans extends Component {
   constructor(props) {

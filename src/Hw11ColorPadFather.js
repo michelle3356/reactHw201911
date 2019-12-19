@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './HwElevenCss.css';
-import HwElevenColorPadSon from './HwElevenColorPadSon';
+import HwElevenColorPadSon from './Hw11ColorPadSon';
 
 export default class HwElevenColorPadFather extends Component {
   constructor(props){
