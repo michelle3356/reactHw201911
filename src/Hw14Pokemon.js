@@ -1,6 +1,39 @@
 import React, { Component } from 'react'
 
+
+// fetch('網址')
+// .then(function(response) {
+//     // 處理 response
+// }).catch(function(err) {
+//     // 錯誤處理
+// });
 export default class Hw14Pokemon extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      keyword:"",
+      pok:""
+    }
+  }
+
+  handleChange = (e) =>{
+    this.setState({
+      keyword:e.target.value
+    })
+    this.callApi(this.state.pok)
+  }
+
+  callApi = () =>{
+    fetch(`https://pokeapi.co/api/v2/pokemon/?limit=100`)
+    .then(res=>{
+      return res.json()
+    .then(json => {
+      this.setState({
+        pok: json.results
+      })
+    })
+    })
+  }
   render() {
     return (
       <div>
@@ -16,7 +49,26 @@ export default class Hw14Pokemon extends Component {
         <ol>
           <li>利抓取 100 隻寶可夢的名字 與 圖片</li>
           <li>可以依名字篩選出寶可夢</li>
+          <span>keyword
+            <input type="text"
+              placeholder="name..."
+              value={this.state.keyword}
+              onChange={this.handleChange}
+            />
+          </span>
         </ol>
+        <table>
+        <tbody>
+        {this.state.pok.map(function(results){
+            return(
+            <tr key={results.index}>
+              <td><img src={results.url} /></td>
+              <td>{results.name}</td>
+            </tr>
+            )
+          })}
+        </tbody>
+        </table>
       </div>
     )
   }
