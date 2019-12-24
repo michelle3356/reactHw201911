@@ -12,7 +12,7 @@ export default class Hw14Pokemon extends Component {
     super(props);
     this.state={
       keyword:"",
-      pok:""
+      pok:[]
     }
   }
 
