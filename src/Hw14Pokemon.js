@@ -67,14 +67,14 @@ export default class Hw14Pokemon extends Component {
         </ol>
         <table>
         <tbody>
-        {/* 而且…你這邊的 results.index 是怎麼回事啊，你拿回來的資料裡，每個物件中有 index 
+        {/* 而且…你這邊的 pokemon.index 是怎麼回事啊，你拿回來的資料裡，每個物件中有 index 
         如果你要設key，我建議你可以直接用 name，因為 pokemon的名字不會重複*/}
-        {pokData.map(function(results){
+        {pokData.map(function(pokemon){
             return(
-            <tr key={results.name}>
+            <tr key={pokemon.name}>
               {/* 然後這邊的url不是圖片位置，請注意。 */}
-              <td><img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(results.url).slice(34,-1)+'.png'} /></td>
-              <td>{results.name}</td>
+              <td><img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(pokemon.url).slice(34,-1)+'.png'} /></td>
+              <td>{pokemon.name}</td>
             </tr>
             )
           })}
