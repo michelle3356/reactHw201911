@@ -19,11 +19,8 @@ export default class Hw14Pokemon extends Component {
   /**
    * 你這邊只是定義 callApi 這個程式，但沒有呼叫，如果你要呼叫的話，不用特別寫 this.callApi = XXX
    * 直接呼叫就可以了，像這樣…
-   * 這樣明白嗎？
-   * 明白
    * 然後呢，如果你的 => FUNCTION 只有一個return值，你可以省略 return 與 { .... }
    * 那是當然的，因為 url 根本就不是圖片的網址，而且我的說明裡其實就有講到…↓
-
    */
   componentDidMount(){
     fetch(`https://pokeapi.co/api/v2/pokemon/?limit=100`)
@@ -41,16 +38,16 @@ export default class Hw14Pokemon extends Component {
     })
   }
   render() {
+    const pokData = this.state.pok.filter(element =>
+      element.name.toLowerCase().indexOf(this.state.keyword.toLowerCase()) > -1
+      )
     return (
       <div>
         <h2>Pokemon</h2>
         <h3>前提</h3>
         <div>
           <div>請使用 https://pokeapi.co/api/v2/pokemon/?limit=100 來抓取100取寶可夢資訊</div>
-          {/* 這邊有提到 id 可以從 url 中取得，但url並不是圖片位置，你要想辦法取的那個 id 
-          好那我再試試看謝謝～～
-          
-          */}
+          {/* 這邊有提到 id 可以從 url 中取得，但url並不是圖片位置，你要想辦法取的那個 id */}
           <div>每隻寶可夢的資料皆有 name, url 可從 url 取得該寶可夢的 id</div>
           <div>每隻寶可夢的圖片位址為： </div>
           {/*  我這邊就有說到，看這邊 */}
@@ -70,17 +67,13 @@ export default class Hw14Pokemon extends Component {
         </ol>
         <table>
         <tbody>
-        {/* 而且…你這邊的 results.index 是怎麼回事啊，你拿回來的資料裡，每個物件中有 index ????????? 
-        沒有 只是先...
-        如果你要設key，我建議你可以直接用 name，因為 pokemon的名字不會重複
-        */}
-        {this.state.pok.map(function(results){
+        {/* 而且…你這邊的 results.index 是怎麼回事啊，你拿回來的資料裡，每個物件中有 index 
+        如果你要設key，我建議你可以直接用 name，因為 pokemon的名字不會重複*/}
+        {pokData.map(function(results){
             return(
             <tr key={results.name}>
               {/* 然後這邊的url不是圖片位置，請注意。 */}
-              {/* 你先寫吧我上班 
-              好謝謝～*/}
-              <td><img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(results.url).substring(34,36)+'.png'} /></td>
+              <td><img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(results.url).slice(34,-1)+'.png'} /></td>
               <td>{results.name}</td>
             </tr>
             )
