@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+const IMG_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
 // fetch('網址')
 // .then(function(response) {
@@ -10,9 +11,9 @@ import React, { Component } from 'react'
 export default class Hw14Pokemon extends Component {
   constructor(props){
     super(props);
-    this.state={
-      keyword:"",
-      pok:[]
+    this.state = {
+      keyword: "",
+      pokemonList: []
     }
   }
 
@@ -27,7 +28,7 @@ export default class Hw14Pokemon extends Component {
     .then(res => res.json())
     .then(json => {
       this.setState({
-        pok: json.results
+        pokemonList: json.results
       })
     });
   }
@@ -37,10 +38,9 @@ export default class Hw14Pokemon extends Component {
       keyword:e.target.value
     })
   }
+  
   render() {
-    const pokData = this.state.pok.filter(element =>
-      element.name.toLowerCase().indexOf(this.state.keyword.toLowerCase()) > -1
-      )
+    const { pokemonList, keyword } = this.state;
     return (
       <div>
         <h2>Pokemon</h2>
@@ -69,15 +69,16 @@ export default class Hw14Pokemon extends Component {
         <tbody>
         {/* 而且…你這邊的 pokemon.index 是怎麼回事啊，你拿回來的資料裡，每個物件中有 index 
         如果你要設key，我建議你可以直接用 name，因為 pokemon的名字不會重複*/}
-        {pokData.map(function(pokemon){
-            return(
+        {
+          pokemonList
+          .filter(({ name }) => name.toLowerCase().indexOf(keyword.toLowerCase()) > -1)
+          .map(pokemon =>
             <tr key={pokemon.name}>
               {/* 然後這邊的url不是圖片位置，請注意。 */}
-              <td><img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(pokemon.url).slice(34,-1)+'.png'} /></td>
+              <td><img src={IMG_URL + (pokemon.url).slice(34,-1)+'.png'} /></td>
               <td>{pokemon.name}</td>
             </tr>
-            )
-          })}
+          )}
         </tbody>
         </table>
       </div>
