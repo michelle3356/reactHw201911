@@ -22,7 +22,7 @@ export default class Hw10DollarsTrans extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      number: '',
+      number: 0,
       dollar: 't'
     }
   }
@@ -45,8 +45,8 @@ export default class Hw10DollarsTrans extends Component {
   render() {
     const number = this.state.number;
     const dollar = this.state.dollar;
-    const usd = dollar === 't' ? convert(number, toUSD) : number;
-    const twd = dollar === 'a' ? convert(number, toTWD) : number;
+    const twd = dollar === 't' ? convert(number, toUSD) : number;
+    const usd = dollar === 'a' ? convert(number, toTWD) : number;
     return (
       <div>
         <h1>台幣(TWD) 與 美金(USD) 轉換</h1>
@@ -54,11 +54,11 @@ export default class Hw10DollarsTrans extends Component {
         <div>1美金 = 30 台幣</div>
         <Hw10DollarsTransSon
           dollar="t"
-          onDollarsTrans={this.handletoUSDChange}
-          value={usd} />
-        <Hw10DollarsTransSon dollar="a"
           onDollarsTrans={this.handletoTWDChange}
-          value={twd} />
+          number={twd} />
+        <Hw10DollarsTransSon dollar="a"
+          onDollarsTrans={this.handletoUSDChange}
+          number={usd} />
       </div>
     )
   }
