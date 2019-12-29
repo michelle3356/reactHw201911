@@ -9,28 +9,28 @@ export default class Hw15LengthConversion extends Component {
     }
   }
 
-  handleMMChange = (value) =>{
+  handleMMChange = (value) => {
     console.warn(value);
     // this.setState({
     //   lengthNum: value.target.value
     // })
   }
 
-  handleCMChange = (value) =>{
+  handleCMChange = (value) => {
     console.warn(value);
     // this.setState({
     //   lengthNum: value.target.value
     // })
   }
 
-  handleMChange = (value) =>{
+  handleMChange = (value) => {
     console.warn(value);
     // this.setState({
     //   lengthNum: value.target.value
     // })
   }
 
-  handleKMChange = (value) =>{
+  handleKMChange = (value) => {
     console.warn(value);
     // this.setState({
     //   lengthNum: value.target.value
@@ -44,17 +44,20 @@ export default class Hw15LengthConversion extends Component {
       <h1>長度轉換</h1>
       <Hw15LCSon
       length="mm"
-      onLengthTrans = {this.handleMMChange} />
+      onLengthTrans = {this.handleMMChange}
+      lengthNum = {lengthNum} />
       <Hw15LCSon
       length="cm"
-      onLengthTrans = {this.handleCMChange} />
+      onLengthTrans = {this.handleCMChange}
+      lengthNum = {lengthNum} />
       <Hw15LCSon
       length="m"
-      onLengthTrans = {this.handleMChange} />
+      onLengthTrans = {this.handleMChange}
+      lengthNum = {lengthNum} />
       <Hw15LCSon
       length="km"
-      onLengthTrans = {this.handleKMChange} />
-        
+      onLengthTrans = {this.handleKMChange}
+      lengthNum = {lengthNum} />
       </div>
     )
   }

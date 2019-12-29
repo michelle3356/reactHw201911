@@ -6,15 +6,21 @@ const lengthUnit = {
   m: 'm',
   km: 'km'
 }
+
 export default class Hw15LCSon extends Component {
   constructor(props){
     super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleToMMChange = this.handleToMMChange.bind(this);
+    this.handleToCMChange = this.handleToCMChange.bind(this);
+    this.handleToMChange = this.handleToMChange.bind(this);
+    this.handleToKMChange = this.handleToKMChange.bind(this);
     this.state = ({
       lengthNum: ''
-    })
+    });
   }
 
-  handleChange = (e) => {
+  handleChange (e) {
     this.props.onLengthTrans(e.target.value)
   }
 

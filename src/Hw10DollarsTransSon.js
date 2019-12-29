@@ -44,7 +44,7 @@ export default class Hw10DollarsTransSon extends Component {
 
   render() {
     // const number = this.state.number;
-    const number = this.props.number;
+    const number = this.props.value;
     const dollar = this.props.dollar;
     return (
       <div>
