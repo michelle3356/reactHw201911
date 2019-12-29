@@ -13,7 +13,7 @@ function toUSD(TWD) {
   return TWD * 30;
 }
 
-export default class AppTwo extends Component {
+export default class Hw10DollarsTransSon extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
