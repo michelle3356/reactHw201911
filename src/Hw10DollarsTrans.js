@@ -1,31 +1,52 @@
 import React, { Component } from 'react'
 import Hw10DollarsTransSon from './Hw10DollarsTransSon.js';
 
+function toTWD(USD) {
+  return USD / 30;
+}
+
+function toUSD(TWD) {
+  return TWD * 30;
+}
+
+function convert(value, convert) {
+  const input = parseFloat(value);
+  if (Number.isNaN(input)) {
+    return '';
+  }
+  const output = convert(input);
+  const rounded = Math.round(output * 1000) / 1000;
+  return rounded.toString();
+}
 export default class Hw10DollarsTrans extends Component {
   constructor(props) {
     super(props);
     this.state = {
       number: '',
+      dollar: 't'
     }
   }
 
   /** 你使用了以下2個function 卻沒定義，所以會出錯 */
-  handletoTWDChange = (value) => {
-    console.warn(value);
+  handletoTWDChange = (number) => {
+    console.warn(number);
     this.setState({
-      number: value * 30
+      dollar: 'a', number
     })
   }
 
-  handletoUSDChange = (value) => {
-    console.warn(value);
+  handletoUSDChange = (number) => {
+    console.warn(number);
     this.setState({
-      number: value / 30
+      dollar: 't', number
     })
   }
 
   render() {
     const number = this.state.number;
+    const dollar = this.state.dollar;
+    const usd = dollar === 't' ? convert(number, toUSD) : number;
+    const twd = dollar === 'a' ? convert(number, toTWD) : number;
     return (
       <div>
         <h1>台幣(TWD) 與 美金(USD) 轉換</h1>
@@ -33,11 +54,11 @@ export default class Hw10DollarsTrans extends Component {
         <div>1美金 = 30 台幣</div>
         <Hw10DollarsTransSon
           dollar="t"
-          onDollarsTrans={this.handletoTWDChange}
-          value={number} />
-        <Hw10DollarsTransSon dollar="a"
           onDollarsTrans={this.handletoUSDChange}
-          value={number} />
+          value={usd} />
+        <Hw10DollarsTransSon dollar="a"
+          onDollarsTrans={this.handletoTWDChange}
+          value={twd} />
       </div>
     )
   }
