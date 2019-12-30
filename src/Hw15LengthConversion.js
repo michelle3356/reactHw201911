@@ -2,27 +2,19 @@ import React, { Component } from 'react'
 import Hw15LCSon from './Hw15LCSon';
 
 function toMM(lengthNum){
-  return lengthNum / 10;   /* cm */
-  return lengthNum / 1000;  /* m */
-  return lengthNum / 1000000;  /* km */
+  return lengthNum
 }
 
 function toCM(lengthNum){
-  return lengthNum * 10;  /* mm */
-  return lengthNum / 100;  /* m */
-  return lengthNum / 1000000;  /* km */
+  return lengthNum / 10;  /* cm */
 }
 
 function toM(lengthNum){
-  return lengthNum * 1000;  /* mm */
-  return lengthNum * 100;  /* cm */
-  return lengthNum / 1000;  /* km */
+  return lengthNum / 1000;  /* m */
 }
 
 function toKM(lengthNum){
-  return lengthNum * 1000000;  /* mm */
-  return lengthNum * 100000;  /* cm */
-  return lengthNum * 1000;  /* m */
+  return lengthNum / 1000000;  /* km */
 }
 
 function convertLength(lengthNum, convert){
@@ -76,9 +68,9 @@ export default class Hw15LengthConversion extends Component {
     const lengthNum = this.state.lengthNum;
     const length = this.state.length;
     const mmL = length === 'mm' ? convertLength(lengthNum, toMM) : lengthNum;
-    const cmL = length === 'cm' ? convertLength(lengthNum, toCM) : lengthNum;
-    const mL = length === 'm' ? convertLength(lengthNum, toM) : lengthNum;
-    const kmL = length === 'km' ? convertLength(lengthNum, toKM) : lengthNum;
+    const cmL = length === 'mm' ? convertLength(lengthNum, toCM) : lengthNum;
+    const mL = length === 'mm' ? convertLength(lengthNum, toM) : lengthNum;
+    const kmL = length === 'mm' ? convertLength(lengthNum, toKM) : lengthNum;
     return (
       <div>
       <h1>長度轉換</h1>
