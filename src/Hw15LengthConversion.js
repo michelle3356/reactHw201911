@@ -67,10 +67,10 @@ export default class Hw15LengthConversion extends Component {
   render() {
     const lengthNum = this.state.lengthNum;
     const length = this.state.length;
-    const mmL = length === 'mm' ? convertLength(lengthNum, toMM) : lengthNum;
-    const cmL = length === 'mm' ? convertLength(lengthNum, toCM) : lengthNum;
-    const mL = length === 'mm' ? convertLength(lengthNum, toM) : lengthNum;
-    const kmL = length === 'mm' ? convertLength(lengthNum, toKM) : lengthNum;
+    const mmL = convertLength(lengthNum, toMM);
+    const cmL = convertLength(lengthNum, toCM);
+    const mL = convertLength(lengthNum, toM);
+    const kmL = convertLength(lengthNum, toKM);
     return (
       <div>
       <h1>長度轉換</h1>
