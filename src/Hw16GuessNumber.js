@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Hw16GuessNumSon from './Hw16GuessNumSon'
 
-const random = Math.round(Math.random()*10)
+const random = Math.floor(Math.random() * 10);
 export default class Hw16GuessNumber extends Component {
   constructor(props){
     super(props);
@@ -22,7 +22,7 @@ export default class Hw16GuessNumber extends Component {
     if(+guessInput === +this.state.random){
       this.setState({
         tru: this.state.tru + 1,
-        random: Math.round(Math.random()*10)
+        random: Math.floor(Math.random() * 10)
       });
     }else{
       this.setState({
