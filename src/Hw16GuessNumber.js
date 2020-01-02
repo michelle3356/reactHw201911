@@ -17,18 +17,19 @@ export default class Hw16GuessNumber extends Component {
 
   handleChange = (e) => {
     const guessInput = e.target.value;
+    // console.log(guessInput)
+    // console.log(this.state.random)
     if(+guessInput === +this.state.random){
       this.setState({
-        tru: this.state.tru + 1
+        tru: this.state.tru + 1,
+        random: Math.round(Math.random()*10)
       });
     }else{
       this.setState({
-        error: this.state.error + 1
+        error: this.state.error + 1,
+        random: Math.round(Math.random()*10)
       })
     }
-    this.setState({
-      random: random,
-    })
   }
   render() {
     const random = this.state.random;
