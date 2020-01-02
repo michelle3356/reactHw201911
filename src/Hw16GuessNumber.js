@@ -1,39 +1,31 @@
 import React, { Component } from 'react';
 import Hw16GuessNumSon from './Hw16GuessNumSon'
 
-function toright(tru){
-  return tru + 1;
-}
-
-function towrong(error){
-  return error + 1;
-}
-
-function guess(value, guess) {
-  console.log(value, guess)
-  const input = parseFloat(value);
-  if (Number.isNaN(input)) {
-    return '';
-  }
-  const output = guess(input);
-  const rounded = Math.round(output * 1000) / 1000;
-  return rounded.toString();
-}
-
-const random = Math.round(Math.random(0,8)*10)
+const random = Math.round(Math.random()*10)
 export default class Hw16GuessNumber extends Component {
   constructor(props){
     super(props);
     this.state = {
       random: random,
       guessNum: '',
-      rightWrong:'right'
+      rightWrong:'right',
+      tru: 0,
+      error: 0
     }
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = (e) => {
-    console.log(e.target.value)
+    const guessInput = e.target.value;
+    if(+guessInput === +this.state.random){
+      this.setState({
+        tru: this.state.tru + 1
+      });
+    }else{
+      this.setState({
+        error: this.state.error + 1
+      })
+    }
     this.setState({
       random: random,
     })
@@ -41,9 +33,8 @@ export default class Hw16GuessNumber extends Component {
   render() {
     const random = this.state.random;
     const guessNum = this.state.guessNum;
-    const rightWrong = this.state.rightWrong;
-    const tru = rightWrong === 'right' ? guess(guessNum, toright) : guessNum;
-    const error = rightWrong === 'wrong' ? guess(guessNum, towrong) : guessNum;
+    const tru = this.state.tru;
+    const error = this.state.error;
     return (
       <div>
         隨機產生 0 ~ 9 的數字，使用者於輸入格內輸入數字，統計正確與錯誤的數量
