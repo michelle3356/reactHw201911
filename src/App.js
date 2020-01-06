@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Homework from './Hw16GuessNumber';
+import Homework from './Hw17RandomNumber';
 
 function App() {
   return (
