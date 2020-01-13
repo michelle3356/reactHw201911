@@ -4,14 +4,38 @@ export default class Hw19 extends Component {
   constructor(props){
     super(props);
     this.state = ({
-      num: 'G',
+      num: 'G'
     })
-  }
+  };
+
+  componentDidMount(){
+    this.random = setInterval(
+      () => this.changNum(),
+      2000
+    );
+  };
+
+  changNum(){
+    this.setState({
+      num: '-'
+    })
+  };
+
   render() {
     const num = this.state.num;
     return (
       <div>
         <h1>打地鼠遊戲 Hit the gopher</h1>
+        <div>
+          <span>{num}</span>
+          <span>{num}</span>
+          <span>{num}</span>
+        </div>
+        <div>
+          <span>{num}</span>
+          <span>{num}</span>
+          <span>{num}</span>
+        </div>
         <div>
           <span>{num}</span>
           <span>{num}</span>
