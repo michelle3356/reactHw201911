@@ -29,8 +29,10 @@ export default class Hw19 extends Component {
     }
   };
 
-  handleClick = (e) => {
-    console.warn(e.target.value)
+  hitScore = (scoreNum) => {
+    this.setState({
+      score: this.state.score + scoreNum
+    })
   }
 
   render() {
@@ -40,10 +42,17 @@ export default class Hw19 extends Component {
       <div>
         <h1>打地鼠遊戲 Hit the gopher</h1>
         <h1>分數：{score}</h1>
-        <Hw19GopherSon onClick={this.handleClick} num={num}/>
-        <Hw19GopherSon onClick={this.handleClick} num={num}/>
-        <Hw19GopherSon onClick={this.handleClick} num={num}/>
-        
+        <Hw19GopherSon hitScore={this.hitScore} num={num}/>
+        <Hw19GopherSon hitScore={this.hitScore} num={num}/>
+        <Hw19GopherSon hitScore={this.hitScore} num={num}/>
+        <br></br>
+        <Hw19GopherSon hitScore={this.hitScore} num={num}/>
+        <Hw19GopherSon hitScore={this.hitScore} num={num}/>
+        <Hw19GopherSon hitScore={this.hitScore} num={num}/>
+        <br></br>
+        <Hw19GopherSon hitScore={this.hitScore} num={num}/>
+        <Hw19GopherSon hitScore={this.hitScore} num={num}/>
+        <Hw19GopherSon hitScore={this.hitScore} num={num}/>
         <div>點擊G得1分，點擊減號扣分</div>
       </div>
       )

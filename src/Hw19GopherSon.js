@@ -7,7 +7,11 @@ export default class Hw19GopherSon extends Component {
   }
 
   handleClick = (e) => {
-    console.warn(e.target.value)
+    if(e.target.value === 'G'){
+      this.props.hitScore(1)
+    }else{
+      this.props.hitScore(-1)
+    }
   }
 
 
@@ -15,8 +19,7 @@ export default class Hw19GopherSon extends Component {
   render() {
     const num = this.props.num
     return (
-      <button onClick = {this.handleClick.bind(this)}>
-        {num}
+      <button onClick={this.handleClick.bind(this)} value={num}>{num}
       </button>
     )
   }
