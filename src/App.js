@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Homework from './Hw19HitGopher';
+import Homework from './Hw20GuessNum';
 
 function App() {
   return (
