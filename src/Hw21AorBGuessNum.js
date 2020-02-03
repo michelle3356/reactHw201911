@@ -54,7 +54,7 @@ export default class Hw21AorBGuessNum extends Component {
                 }else{
                   bNum++
                 }
-                this.state.list.push(value + ':' + aNum + 'A' + bNum + 'B')
+                list.push(value + ':' + aNum + 'A' + bNum + 'B')
               }
             }
             
