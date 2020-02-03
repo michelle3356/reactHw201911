@@ -37,6 +37,8 @@ export default class Hw21AorBGuessNum extends Component {
   handleClick = () => {
     const value = this.state.value;
     const list = this.state.list;
+    var aNum = 0;
+    var bNum = 0;
     if(value.length <= 4){
       (value.split("")).filter(function(element, index, arr){
         if(arr.indexOf(element) === index){
@@ -48,17 +50,13 @@ export default class Hw21AorBGuessNum extends Component {
               var ansFinal = fourArr.join("").substring(j, j+1)
               if(guess1 === ansFinal){
                 if(i === j){
-                  this.setState({
-                    a: this.state.a + 1
-                  })
+                  aNum++
                 }else{
-                  this.setState({
-                    b: this.state.b + 1
-                  })
+                  bNum++
                 }
               }
             }
-            // this.state.list.push(value + ':' + this.state.a + 'A' + this.state.b + 'B')
+            this.state.list.push(value + ':' + aNum + 'A' + bNum + 'B')
           }
         }else if(arr.indexOf(element) !== index){
           alert('輸入數字不可重複')
