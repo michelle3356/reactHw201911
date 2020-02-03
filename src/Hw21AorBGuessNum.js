@@ -18,12 +18,7 @@ export default class Hw21AorBGuessNum extends Component {
     super(props);
     this.state = ({
       arr: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-      list: [],
-      a: 0,
-      b: 0,
-      answer: [],
-      newArr: [],
-      num: Math.floor(Math.random() * 10)
+      list: []
     });
     }
   
@@ -57,7 +52,6 @@ export default class Hw21AorBGuessNum extends Component {
                 list.push(value + ':' + aNum + 'A' + bNum + 'B')
               }
             }
-            
           }
         }else if(arr.indexOf(element) !== index){
           alert('輸入數字不可重複')
