@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
+function isvalid(value, ans){
 
+}
 var fourString = '';
 var fourArr = [];
 for(let i = 0; i < 4; i++){
