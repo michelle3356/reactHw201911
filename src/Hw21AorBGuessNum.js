@@ -39,7 +39,7 @@ export default class Hw21AorBGuessNum extends Component {
     const list = this.state.list;
     var aNum = 0;
     var bNum = 0;
-    if(value.length <= 4){
+    if(value.length <= 4 && !isNaN(value)){
       (value.split("")).filter(function(element, index, arr){
         if(arr.indexOf(element) === index){
           list.push(value);
@@ -54,9 +54,10 @@ export default class Hw21AorBGuessNum extends Component {
                 }else{
                   bNum++
                 }
+                this.state.list.push(value + ':' + aNum + 'A' + bNum + 'B')
               }
             }
-            this.state.list.push(value + ':' + aNum + 'A' + bNum + 'B')
+            
           }
         }else if(arr.indexOf(element) !== index){
           alert('輸入數字不可重複')
