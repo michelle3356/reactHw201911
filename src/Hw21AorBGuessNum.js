@@ -29,7 +29,7 @@ export default class Hw21AorBGuessNum extends Component {
     })
   };
 
-  handleClick = () => {
+  handleClick = (e) => {
     const value = this.state.value;
     const list = this.state.list;
     var aNum = 0;
@@ -61,6 +61,12 @@ export default class Hw21AorBGuessNum extends Component {
       alert('格式不正確')
     }
   };
+
+  handleRestClick = (e) => {
+    this.setState({
+      list: [],
+    })
+  }
   render() {
     const list = this.state.list.map((item,index)=>
         <li key={index}>{item}</li>
@@ -80,7 +86,7 @@ export default class Hw21AorBGuessNum extends Component {
         />
         <button onClick={this.handleClick}>Guess!</button>
         <div>答對了！遊戲結束，你要重新一局嗎？
-          <button>好，重新一局！</button>
+          <button onClick={this.handleRestClick}>好，重新一局！</button>
         </div>
         <ul>
           {list}
