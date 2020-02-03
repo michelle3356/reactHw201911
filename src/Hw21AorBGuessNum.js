@@ -1,14 +1,32 @@
 import React, { Component } from 'react'
 
+
+var fourString = '';
+var fourArr = [];
+for(let i = 0; i < 4; i++){
+  fourString = Math.floor(Math.random() * 10);
+  for(let j = 0; j < fourArr.length; j++){
+    if(fourArr[j] === fourString){
+      fourArr.splice(j,1);
+      i--;
+    }
+  }
+  fourArr.push(fourString);
+}
 export default class Hw21AorBGuessNum extends Component {
   constructor(props){
     super(props);
     this.state = ({
       arr: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+      list: [],
+      a: 0,
+      b: 0,
+      answer: [],
       newArr: [],
       num: Math.floor(Math.random() * 10)
-    })
-  }
+    });
+    }
+  
 
   handleChange = (e) => {
     this.setState({
@@ -16,24 +34,44 @@ export default class Hw21AorBGuessNum extends Component {
     })
   };
 
-  handleClick = (e) => {
+  handleClick = () => {
     const value = this.state.value;
-    const newArr = this.state.newArr;
-    const arr = this.state.arr;
-    const num = this.state.njum;
+    const list = this.state.list;
     if(value.length <= 4){
-      // console.log(value.split(""))
-      console.log(arr[num])
-      if((value.split("")).indexOf(arr[num]) === -1){
-        console.log('？？？')
-      }else{
-        alert('輸入數字不可重複')
-      }
+      (value.split("")).filter(function(element, index, arr){
+        if(arr.indexOf(element) === index){
+          list.push(value);
+          console.warn(fourArr)
+          for(var i = 0; i < 4; i++){
+            var guess1 = value.substring(i, i+1);
+            for(var j = 0; j < 4; j++){
+              var ansFinal = fourArr.join("").substring(j, j+1)
+              if(guess1 === ansFinal){
+                if(i === j){
+                  this.setState({
+                    a: this.state.a + 1
+                  })
+                }else{
+                  this.setState({
+                    b: this.state.b + 1
+                  })
+                }
+              }
+            }
+            // this.state.list.push(value + ':' + this.state.a + 'A' + this.state.b + 'B')
+          }
+        }else if(arr.indexOf(element) !== index){
+          alert('輸入數字不可重複')
+        }
+      });
     }else{
       alert('格式不正確')
     }
   };
   render() {
+    const list = this.state.list.map((item,index)=>
+        <li key={index}>{item}</li>
+      )
     return (
       <div>
         <h1>猜數字</h1>
@@ -48,6 +86,12 @@ export default class Hw21AorBGuessNum extends Component {
           onChange={this.handleChange}
         />
         <button onClick={this.handleClick}>Guess!</button>
+        <div>答對了！遊戲結束，你要重新一局嗎？
+          <button>好，重新一局！</button>
+        </div>
+        <ul>
+          {list}
+        </ul>
       </div>
     )
   }
