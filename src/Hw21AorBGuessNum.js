@@ -1,20 +1,40 @@
 import React, { Component } from 'react'
 
-function isvalid(value, ans){
+//不重複的四個數字
+function isAns(){
+  var arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  arr.sort(function(){
+    return Math.random() - 0.5;
+  });
+  return arr.slice(0,4).join("");
+};
 
-}
-var fourString = '';
-var fourArr = [];
-for(let i = 0; i < 4; i++){
-  fourString = Math.floor(Math.random() * 10);
-  for(let j = 0; j < fourArr.length; j++){
-    if(fourArr[j] === fourString){
-      fourArr.splice(j,1);
-      i--;
+function isValid(inputNum){
+  if(inputNum.length <= 4 && !isNaN(inputNum)){
+    for(var i = 0; i < 4; i++){
+      if(inputNum[i] !== inputNum[i+1]){
+        return inputNum;
+      }else{
+        alert("輸入數字不可重複")
+      }
     }
+  }else{
+    alert("格式不正確")
   }
-  fourArr.push(fourString);
-}
+};
+
+// var fourString = '';
+// var fourArr = [];
+// for(let i = 0; i < 4; i++){
+//   fourString = Math.floor(Math.random() * 10);
+//   for(let j = 0; j < fourArr.length; j++){
+//     if(fourArr[j] === fourString){
+//       fourArr.splice(j,1);
+//       i--;
+//     }
+//   }
+//   fourArr.push(fourString);
+// }
 export default class Hw21AorBGuessNum extends Component {
   constructor(props){
     super(props);
@@ -27,41 +47,44 @@ export default class Hw21AorBGuessNum extends Component {
 
   handleChange = (e) => {
     this.setState({
-      value: e.target.value
+      inputNum: e.target.value
     })
   };
 
   handleClick = (e) => {
-    const value = this.state.value;
+    const inputNum = this.state.inputNum;
     const list = this.state.list;
     var aNum = 0;
     var bNum = 0;
-    if(value.length <= 4 && !isNaN(value)){
-      (value.split("")).filter(function(element, index, arr){
-        if(arr.indexOf(element) === index){
-          list.push(value);
-          console.warn(fourArr)
-          for(var i = 0; i < 4; i++){
-            var guess1 = value.substring(i, i+1);
-            for(var j = 0; j < 4; j++){
-              var ansFinal = fourArr.join("").substring(j, j+1)
-              if(guess1 === ansFinal){
-                if(i === j){
-                  aNum++
-                }else{
-                  bNum++
-                }
-                list.push(value + ':' + aNum + 'A' + bNum + 'B')
-              }
-            }
-          }
-        }else if(arr.indexOf(element) !== index){
-          alert('輸入數字不可重複')
-        }
-      });
-    }else{
-      alert('格式不正確')
-    }
+
+    isValid(inputNum);
+    
+    // if(inputNum.length <= 4 && !isNaN(inputNum)){
+    //   (inputNum.split("")).filter(function(element, index, arr){
+    //     if(arr.indexOf(element) === index){
+    //       list.push(inputNum);
+          
+    //       for(var i = 0; i < 4; i++){
+    //         var guess1 = inputNum.substring(i, i+1);
+    //         for(var j = 0; j < 4; j++){
+    //           var ansFinal = fourArr.join("").substring(j, j+1)
+    //           if(guess1 === ansFinal){
+    //             if(i === j){
+    //               aNum++
+    //             }else{
+    //               bNum++
+    //             }
+    //             list.push(inputNum + ':' + aNum + 'A' + bNum + 'B')
+    //           }
+    //         }
+    //       }
+    //     }else if(arr.indexOf(element) !== index){
+    //       alert('輸入數字不可重複')
+    //     }
+    //   });
+    // }else{
+    //   alert('格式不正確')
+    // }
   };
 
   handleRestClick = (e) => {
