@@ -13,6 +13,7 @@ function isValid(inputNum){
   if(inputNum.length <= 4 && !isNaN(inputNum)){
     for(var i = 0; i < 4; i++){
       if(inputNum[i] !== inputNum[i+1]){
+        checkAB(inputNum)
         return inputNum;
       }else{
         alert("輸入數字不可重複")
@@ -22,6 +23,29 @@ function isValid(inputNum){
     alert("格式不正確")
   }
 };
+
+function checkAB(inputNum){
+  var arr;
+  var aNum = 0;
+  var bNum = 0;
+  const list = [];
+  isAns();
+  
+  for(var i = 0; i < 4; i++){
+    inputNum = inputNum.substring(i, i+1);
+    for(var j = 0; j < 4; j++){
+      var ans = arr.substring(j, j+1)
+      if(inputNum === ans){
+        if(i === j){
+          aNum++
+        }else{
+          bNum++
+        }
+      }
+    }
+  }
+  list.push(inputNum + ':' + aNum + 'A' + bNum + 'B')
+}
 
 // var fourString = '';
 // var fourArr = [];
@@ -54,11 +78,11 @@ export default class Hw21AorBGuessNum extends Component {
   handleClick = (e) => {
     const inputNum = this.state.inputNum;
     const list = this.state.list;
-    var aNum = 0;
-    var bNum = 0;
-
+    
     isValid(inputNum);
     
+
+
     // if(inputNum.length <= 4 && !isNaN(inputNum)){
     //   (inputNum.split("")).filter(function(element, index, arr){
     //     if(arr.indexOf(element) === index){
@@ -88,6 +112,7 @@ export default class Hw21AorBGuessNum extends Component {
   };
 
   handleRestClick = (e) => {
+    isAns()
     this.setState({
       list: [],
     })
