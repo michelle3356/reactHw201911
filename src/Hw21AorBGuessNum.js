@@ -9,6 +9,7 @@ function isAns(){
   return arr.slice(0,4).join("");
 };
 
+//驗證輸入數字是否符合規格
 function isValid(inputNum){
   if(inputNum.length <= 4 && !isNaN(inputNum)){
     for(var i = 0; i < 4; i++){
@@ -24,6 +25,7 @@ function isValid(inputNum){
   }
 };
 
+//判斷幾Ａ幾Ｂ
 function checkAB(inputNum){
   var arr;
   var aNum = 0;
@@ -47,18 +49,6 @@ function checkAB(inputNum){
   list.push(inputNum + ':' + aNum + 'A' + bNum + 'B')
 }
 
-// var fourString = '';
-// var fourArr = [];
-// for(let i = 0; i < 4; i++){
-//   fourString = Math.floor(Math.random() * 10);
-//   for(let j = 0; j < fourArr.length; j++){
-//     if(fourArr[j] === fourString){
-//       fourArr.splice(j,1);
-//       i--;
-//     }
-//   }
-//   fourArr.push(fourString);
-// }
 export default class Hw21AorBGuessNum extends Component {
   constructor(props){
     super(props);
@@ -68,7 +58,6 @@ export default class Hw21AorBGuessNum extends Component {
     });
     }
   
-
   handleChange = (e) => {
     this.setState({
       inputNum: e.target.value
@@ -78,37 +67,9 @@ export default class Hw21AorBGuessNum extends Component {
   handleClick = (e) => {
     const inputNum = this.state.inputNum;
     const list = this.state.list;
-    
+
     isValid(inputNum);
     
-
-
-    // if(inputNum.length <= 4 && !isNaN(inputNum)){
-    //   (inputNum.split("")).filter(function(element, index, arr){
-    //     if(arr.indexOf(element) === index){
-    //       list.push(inputNum);
-          
-    //       for(var i = 0; i < 4; i++){
-    //         var guess1 = inputNum.substring(i, i+1);
-    //         for(var j = 0; j < 4; j++){
-    //           var ansFinal = fourArr.join("").substring(j, j+1)
-    //           if(guess1 === ansFinal){
-    //             if(i === j){
-    //               aNum++
-    //             }else{
-    //               bNum++
-    //             }
-    //             list.push(inputNum + ':' + aNum + 'A' + bNum + 'B')
-    //           }
-    //         }
-    //       }
-    //     }else if(arr.indexOf(element) !== index){
-    //       alert('輸入數字不可重複')
-    //     }
-    //   });
-    // }else{
-    //   alert('格式不正確')
-    // }
   };
 
   handleRestClick = (e) => {
