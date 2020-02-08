@@ -73,7 +73,8 @@ export default class Hw21AorBGuessNum extends Component {
     })
   };
 
-  handleClick = (e) => {
+  handleSubmit = (e) => {
+    e.preventDefault();
     const { inputNum, ans } = this.state;
     let { list } = this.state;
 
@@ -112,11 +113,13 @@ export default class Hw21AorBGuessNum extends Component {
           <li>會累積過去猜過的答案與結果</li>
           <li>如果猜到 4A 則遊戲結束，並可以另開新局。</li>
         </ol>
-        <input type="text"
-          value={this.state.inputNum}
-          onChange={this.handleChange}
-        />
-        <button onClick={this.handleClick}>Guess!</button>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text"
+            value={this.state.inputNum}
+            onChange={this.handleChange}
+          />
+          <button>Guess!</button>
+        </form>
         <div className={this.state.display}>答對了！遊戲結束，你要重新一局嗎？
           <button onClick={this.handleRestClick}>好，重新一局！</button>
         </div>
