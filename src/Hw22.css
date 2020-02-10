@@ -1,0 +1,11 @@
+.Fruit{
+  margin: 10px 0;
+  padding: 10px;
+  text-align: center;
+  border-radius: 3px;
+  border: 1px solid #999;
+}
+
+.Fruit input{
+  width: 100%;
+}
