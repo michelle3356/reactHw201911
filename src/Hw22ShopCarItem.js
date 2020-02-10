@@ -11,8 +11,8 @@ export default class Hw22ShopCarItem extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const list = this.state.list;
-    list.push(this.props.Fruit + ' * ' + this.props.Price + ' = $' + this.state.num * this.props.Price)
-    console.log(list)
+    list.push(this.props.Fruit + ' * ' + this.state.num + ' = $' + this.state.num * this.props.Price)
+    this.props.onListhandle(list);
   }
 
   handleChange = (e) => {

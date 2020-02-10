@@ -7,18 +7,24 @@ export default class Hw22ShopCar extends Component {
       Fruit: '',
       price: ''
     }
-  }
+  };
+
+  handleList = (e) => {
+    console.warn(e)
+  };
+
+
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-sm-8">
             <div className="row">
-              <Hw22ShopCarItem Fruit="橘子" Price="20" />
-              <Hw22ShopCarItem Fruit="蓮霧" Price="30" />
-              <Hw22ShopCarItem Fruit="哈密瓜" Price="40" />
-              <Hw22ShopCarItem Fruit="蘋果" Price="50" />
-              <Hw22ShopCarItem Fruit="葡萄柚" Price="15" />
+              <Hw22ShopCarItem Fruit="橘子" Price="20" onListhandle={this.handleList} />
+              <Hw22ShopCarItem Fruit="蓮霧" Price="30" onListhandle={this.handleList} />
+              <Hw22ShopCarItem Fruit="哈密瓜" Price="40" onListhandle={this.handleList} />
+              <Hw22ShopCarItem Fruit="蘋果" Price="50" onListhandle={this.handleList} />
+              <Hw22ShopCarItem Fruit="葡萄柚" Price="15" onListhandle={this.handleList} />
             </div>
           </div>
           <div className="col-sm-4">
