@@ -5,12 +5,18 @@ export default class Hw22ShopCar extends Component {
     super(props);
     this.state = {
       Fruit: '',
-      price: ''
+      price: '',
+      list:[]
     }
   };
 
-  handleList = (e) => {
-    console.warn(e)
+  handleList = (listItem) => {
+    let list = this.state.list;
+    list.push(listItem);
+    this.setState({
+      list: list
+    })
+    console.warn(this.state.list)
   };
 
 
