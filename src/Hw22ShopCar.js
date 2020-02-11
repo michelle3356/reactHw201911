@@ -11,10 +11,10 @@ export default class Hw22ShopCar extends Component {
     }
   };
 
-  handleList = (listItem, addSum) => {
+  handleList = (listItem, addSum, price) => {
     let listOne = this.state.list;
     listOne.push(listItem);
-    console.warn(addSum)
+    console.warn(addSum,price)
     this.setState({
       list: listOne
     })
@@ -24,7 +24,7 @@ export default class Hw22ShopCar extends Component {
 
   render() {
     const FruitListdata = this.state.list.map((item, index) =>
-      <li key={index}>{item.addSum}</li>
+      <li key={index}>{item}</li>
     )
     return (
       <div className="container">
