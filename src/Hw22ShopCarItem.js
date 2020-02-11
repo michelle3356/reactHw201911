@@ -5,14 +5,21 @@ export default class Hw22ShopCarItem extends Component {
     super(props);
     this.state = {
       num: '',
-      list: []
+      list: [],
+      addSum: 0
     }
   }
   handleSubmit = (e) => {
     e.preventDefault();
     const list = this.state.list;
-    list.push(this.props.Fruit + ' * ' + this.state.num + ' = $' + this.state.num * this.props.Price)
-    this.props.onListhandle(list);
+    let addSum = this.state.addSum;
+    addSum = addSum + parseInt(this.state.num);
+    this.setState({
+      list: [],
+      addSum: addSum
+    });
+    list.push(this.props.Fruit + ' * ' + addSum + ' = $' + addSum * this.props.Price)
+    this.props.onListhandle(list, addSum);
   }
 
   handleChange = (e) => {

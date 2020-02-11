@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Hw22ShopCarItem from './Hw22ShopCarItem'
+import Hw22List from './Hw22List'
 export default class Hw22ShopCar extends Component {
   constructor(props){
     super(props);
@@ -10,17 +11,21 @@ export default class Hw22ShopCar extends Component {
     }
   };
 
-  handleList = (listItem) => {
-    let list = this.state.list;
-    list.push(listItem);
+  handleList = (listItem, addSum) => {
+    let listOne = this.state.list;
+    listOne.push(listItem);
+    console.warn(addSum)
     this.setState({
-      list: list
+      list: listOne
     })
     console.warn(this.state.list)
   };
 
 
   render() {
+    const FruitListdata = this.state.list.map((item, index) =>
+      <li key={index}>{item.addSum}</li>
+    )
     return (
       <div className="container">
         <div className="row">
@@ -35,7 +40,8 @@ export default class Hw22ShopCar extends Component {
           </div>
           <div className="col-sm-4">
             <ul>
-              
+            {FruitListdata}
+              <Hw22List />
             </ul>
           </div>
         </div>
