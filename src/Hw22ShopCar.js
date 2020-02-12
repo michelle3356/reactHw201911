@@ -8,48 +8,44 @@ export default class Hw22ShopCar extends Component {
       Fruit: '',
       price: '',
       list:[],
-      addSum: 0,
-      total: 0
+      number: 0,
+      totalPrice: 0,
+      display: 'hide'
     }
     
   };
 
-  handleList = (listItem, addSum, price) => {
-    let listOne = this.state.list;
-    listOne.push(listItem);
-    console.warn(addSum,price)
+  handleList = (number, totalPrice) => {
     this.setState({
-      list: listOne,
-      addSum: addSum,
-      total: price
+      number: number,
+      totalPrice: totalPrice,
+      display: number ? 'show': 'hide'
     })
-    console.warn(this.state.list)
+
   };
 
 
   render() {
-    const FruitListdata = this.state.list.map((item, index) =>
-      <li key={index}>{item}</li>
-    )
+    const { number , totalPrice, display } = this.state
     return (
       <div className="container">
         <div className="row">
           <div className="col-sm-8">
             <div className="row">
-              <Hw22ShopCarItem Fruit="橘子" Price="20" onListhandle={this.handleList} />
-              <Hw22ShopCarItem Fruit="蓮霧" Price="30" onListhandle={this.handleList} />
-              <Hw22ShopCarItem Fruit="哈密瓜" Price="40" onListhandle={this.handleList} />
-              <Hw22ShopCarItem Fruit="蘋果" Price="50" onListhandle={this.handleList} />
-              <Hw22ShopCarItem Fruit="葡萄柚" Price="15" onListhandle={this.handleList} />
+              <Hw22ShopCarItem Fruit="橘子" Price="20" onListhandle={this.handleList.bind(this)} />
+              <Hw22ShopCarItem Fruit="蓮霧" Price="30" onListhandle={this.handleList.bind(this)} />
+              <Hw22ShopCarItem Fruit="哈密瓜" Price="40" onListhandle={this.handleList.bind(this)} />
+              <Hw22ShopCarItem Fruit="蘋果" Price="50" onListhandle={this.handleList.bind(this)} />
+              <Hw22ShopCarItem Fruit="葡萄柚" Price="15" onListhandle={this.handleList.bind(this)} />
             </div>
           </div>
           <div className="col-sm-4">
             <ul>
-              <Hw22List Fruit="橘子" Price={this.state.total}  addSum={this.state.addSum} />
-              <Hw22List Fruit="蓮霧" Price={this.state.total}  addSum={this.state.addSum} />
-              <Hw22List Fruit="哈密瓜" Price={this.state.total}  addSum={this.state.addSum} />
-              <Hw22List Fruit="蘋果" Price={this.state.total}  addSum={this.state.addSum} />
-              <Hw22List Fruit="葡萄柚" Price={this.state.total}  addSum={this.state.addSum} />
+              <Hw22List Fruit="橘子" totalPrice={totalPrice}  number={number} display={display} />
+              <Hw22List Fruit="蓮霧" totalPrice={totalPrice}  number={number} display={display} />
+              <Hw22List Fruit="哈密瓜" totalPrice={totalPrice}  number={number} display={display} />
+              <Hw22List Fruit="蘋果" totalPrice={totalPrice}  number={number} display={display} />
+              <Hw22List Fruit="葡萄柚" totalPrice={totalPrice}  number={number} display={display} />
               <li>=======================</li>
               <li>總計：$</li>
             </ul>

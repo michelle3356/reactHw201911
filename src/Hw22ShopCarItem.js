@@ -5,25 +5,23 @@ export default class Hw22ShopCarItem extends Component {
     super(props);
     this.state = {
       num: '',
-      list: [],
-      addSum: 0,
-      price: 0
+      number: 0,
+      totalPrice: 0
     }
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    const list = this.state.list;
-    let addSum = this.state.addSum;
-    let price = this.state.price;
-    addSum = addSum + parseInt(this.state.num);
-    price = addSum * this.props.Price;
+    let number = this.state.number;
+    let totalPrice = this.state.totalPrice;
+    number = number + parseInt(this.state.num);
+    totalPrice = number * this.props.Price;
+
     this.setState({
-      list: [],
-      addSum: addSum,
-      price: price
+      number: number,
+      totalPrice: totalPrice
     });
-    list.push(this.props.Fruit + ' * ' + addSum + ' = $' + addSum * this.props.Price)
-    this.props.onListhandle(list, addSum, price);
+
+    this.props.onListhandle(number, totalPrice);
   }
 
   handleChange = (e) => {
@@ -32,9 +30,8 @@ export default class Hw22ShopCarItem extends Component {
     })
   }
   render() {
-    const Fruit = this.props.Fruit;
-    const Price = this.props.Price;
-    const num = this.state.num;
+    const { Fruit, Price } = this.props;
+    const { num } = this.state;
     return (
       <div className="col-sm-3">
         <div className="Fruit">
