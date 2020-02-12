@@ -7,8 +7,11 @@ export default class Hw22ShopCar extends Component {
     this.state = {
       Fruit: '',
       price: '',
-      list:[]
+      list:[],
+      addSum: 0,
+      total: 0
     }
+    
   };
 
   handleList = (listItem, addSum, price) => {
@@ -16,7 +19,9 @@ export default class Hw22ShopCar extends Component {
     listOne.push(listItem);
     console.warn(addSum,price)
     this.setState({
-      list: listOne
+      list: listOne,
+      addSum: addSum,
+      total: price
     })
     console.warn(this.state.list)
   };
@@ -40,8 +45,13 @@ export default class Hw22ShopCar extends Component {
           </div>
           <div className="col-sm-4">
             <ul>
-            {FruitListdata}
-              <Hw22List />
+              <Hw22List Fruit="橘子" Price={this.state.total}  addSum={this.state.addSum} />
+              <Hw22List Fruit="蓮霧" Price={this.state.total}  addSum={this.state.addSum} />
+              <Hw22List Fruit="哈密瓜" Price={this.state.total}  addSum={this.state.addSum} />
+              <Hw22List Fruit="蘋果" Price={this.state.total}  addSum={this.state.addSum} />
+              <Hw22List Fruit="葡萄柚" Price={this.state.total}  addSum={this.state.addSum} />
+              <li>=======================</li>
+              <li>總計：$</li>
             </ul>
           </div>
         </div>
