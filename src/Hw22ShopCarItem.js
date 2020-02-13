@@ -1,37 +1,35 @@
 import React, { Component } from 'react'
 import './Hw22.css'
 export default class Hw22ShopCarItem extends Component {
+// 1. 顯示水果名 與價格
+// 2. 輸入數量
+// 3. 將輸入的數量送至右邊的清單
   constructor(props){
     super(props);
     this.state = {
-      num: '',
-      number: 0,
-      totalPrice: 0
+      FruitNum: this.props.FruitNum,
+      Price: this.props.Price
     }
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    let number = this.state.number;
-    let totalPrice = this.state.totalPrice;
-    number = number + parseInt(this.state.num);
-    totalPrice = number * this.props.Price;
-
+    let FruitNum = this.state.FruitNum
+    let Price = this.state.Price
     this.setState({
-      number: number,
-      totalPrice: totalPrice
+      FruitNum: FruitNum,
+      Price: this.props.Price
     });
-
-    this.props.onListhandle(number, totalPrice);
+    this.props.onItemhandle(FruitNum , Price);
   }
 
   handleChange = (e) => {
     this.setState({
-      num: e.target.value
+      FruitNum: e.target.value
     })
   }
   render() {
     const { Fruit, Price } = this.props;
-    const { num } = this.state;
+    const { FruitNum } = this.state;
     return (
       <div className="col-sm-3">
         <div className="Fruit">
@@ -41,7 +39,7 @@ export default class Hw22ShopCarItem extends Component {
             <input type="number" 
             placeholder="數量" 
             onChange = {this.handleChange}
-            value={num} />
+            value={FruitNum} />
             <button className="btn btn-primary">Add to cart</button>
           </form>
         </div>
