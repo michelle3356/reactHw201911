@@ -8,18 +8,21 @@ export default class Hw22ShopCarItem extends Component {
     super(props);
     this.state = {
       FruitNum: this.props.FruitNum,
-      Price: this.props.Price
+      Price: this.props.Price,
+      id: this.props.id
     }
   }
   handleSubmit = (e) => {
     e.preventDefault();
     let FruitNum = this.state.FruitNum
     let Price = this.state.Price
+    let id = this.state.id
     this.setState({
       FruitNum: FruitNum,
-      Price: this.props.Price
+      Price: this.props.Price,
+      id: id
     });
-    this.props.onItemhandle(FruitNum , Price);
+    this.props.onItemhandle(FruitNum , Price, id);
   }
 
   handleChange = (e) => {
