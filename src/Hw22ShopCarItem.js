@@ -8,21 +8,19 @@ export default class Hw22ShopCarItem extends Component {
     super(props);
     this.state = {
       FruitNum: this.props.FruitNum,
-      Price: this.props.Price,
       id: this.props.id
     }
   }
   handleSubmit = (e) => {
     e.preventDefault();
+    console.warn(this.props.id)
     let FruitNum = this.state.FruitNum
-    let Price = this.state.Price
     let id = this.state.id
     this.setState({
       FruitNum: FruitNum,
-      Price: this.props.Price,
       id: id
     });
-    this.props.onItemhandle(FruitNum , Price, id);
+    this.props.onItemhandle(FruitNum , id);
   }
 
   handleChange = (e) => {
@@ -31,14 +29,14 @@ export default class Hw22ShopCarItem extends Component {
     })
   }
   render() {
-    const { Fruit, Price } = this.props;
+    const { Fruit, Price, id } = this.props;
     const { FruitNum } = this.state;
     return (
       <div className="col-sm-3">
         <div className="Fruit">
           <div>{Fruit}</div>
           <div>${Price}</div>
-          <form onSubmit={this.handleSubmit}>
+          <form className={id} onSubmit={this.handleSubmit.bind(this)}>
             <input type="number" 
             placeholder="數量" 
             onChange = {this.handleChange}

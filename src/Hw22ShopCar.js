@@ -43,7 +43,7 @@ export default class Hw22ShopCar extends Component {
   }
 
   render() {
-    const { display, FruitNum, totalFruitPrice } = this.state;
+    const { display, FruitNum, totalFruitPrice, id } = this.state;
     return (
       <div className="container">
         <div className="row">
@@ -58,11 +58,11 @@ export default class Hw22ShopCar extends Component {
           </div>
           <div className="col-sm-4">
             <ul>
-              <Hw22List Fruit="橘子" totalFruitPrice={totalFruitPrice}  id="0" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this)} onClearhandle={this.handleClear.bind(this)} />
-              <Hw22List Fruit="蓮霧" totalFruitPrice={totalFruitPrice}  id="1" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this)} onClearhandle={this.handleClear.bind(this)} />
-              <Hw22List Fruit="哈密瓜" totalFruitPrice={totalFruitPrice}  id="2" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this)} onClearhandle={this.handleClear.bind(this)} />
-              <Hw22List Fruit="蘋果" totalFruitPrice={totalFruitPrice}  id="3" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this)} onClearhandle={this.handleClear.bind(this)} />
-              <Hw22List Fruit="葡萄柚" totalFruitPrice={totalFruitPrice}  id="4" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this)} onClearhandle={this.handleClear.bind(this)} />
+              <Hw22List Fruit="橘子" totalFruitPrice={totalFruitPrice}  id="0" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this, id)} onClearhandle={this.handleClear.bind(this)} />
+              <Hw22List Fruit="蓮霧" totalFruitPrice={totalFruitPrice}  id="1" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this, id)} onClearhandle={this.handleClear.bind(this)} />
+              <Hw22List Fruit="哈密瓜" totalFruitPrice={totalFruitPrice}  id="2" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this, id)} onClearhandle={this.handleClear.bind(this)} />
+              <Hw22List Fruit="蘋果" totalFruitPrice={totalFruitPrice}  id="3" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this, id)} onClearhandle={this.handleClear.bind(this)} />
+              <Hw22List Fruit="葡萄柚" totalFruitPrice={totalFruitPrice}  id="4" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this, id)} onClearhandle={this.handleClear.bind(this)} />
               <li>=======================</li>
               <li>總計：${FruitNum * totalFruitPrice}</li>
             </ul>
