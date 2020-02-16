@@ -11,19 +11,34 @@ export default class Hw22ShopCar extends Component {
       totalPrice: 0,
       display: 'hide',
       totalFruitPrice: 0,
-      id: ''
+      id: '',
+      original: '',
+      flow:'',
+      ha:'',
+      apple: '',
+      purple: ''
     }
   };
 
-  handleItem = (FruitNum, Price, id) => {
+  handleItem = (FruitNum, Price, id, original, flow, ha, apple, purple) => {
     let finalFruitNum = parseInt(this.state.FruitNum) + parseInt(FruitNum);
+    let finaloriginal = parseInt(this.state.original) + parseInt(original);
+    let finalflow = parseInt(this.state.flow) + parseInt(flow);
+    let finalha = parseInt(this.state.ha) + parseInt(ha);
+    let finalapple = parseInt(this.state.apple) + parseInt(apple);
+    let finalpurple = parseInt(this.state.purple) + parseInt(purple);
     let totalFruitPrice = Price * finalFruitNum;
     let fid = id
     this.setState({
       display: finalFruitNum ? 'show': 'hide',
       FruitNum: finalFruitNum ? finalFruitNum : 0,
       totalFruitPrice: totalFruitPrice,
-      id: fid
+      id: fid,
+      original: finaloriginal,
+      flow: finalflow,
+      ha: finalha,
+      apple: finalapple,
+      purple: finalpurple
     })
   };
 
@@ -43,17 +58,17 @@ export default class Hw22ShopCar extends Component {
   }
 
   render() {
-    const { display, FruitNum, totalFruitPrice, id } = this.state;
+    const { display, FruitNum, totalFruitPrice, id, original, flow, ha, apple, purple } = this.state;
     return (
       <div className="container">
         <div className="row">
           <div className="col-sm-8">
             <div className="row">
-              <Hw22ShopCarItem Fruit="橘子" Price="20" FruitNum={FruitNum} id="0" onItemhandle={this.handleItem.bind(this)} />
-              <Hw22ShopCarItem Fruit="蓮霧" Price="30" FruitNum={FruitNum} id="1" onItemhandle={this.handleItem.bind(this)} />
-              <Hw22ShopCarItem Fruit="哈密瓜" Price="40" FruitNum={FruitNum} id="2" onItemhandle={this.handleItem.bind(this)} />
-              <Hw22ShopCarItem Fruit="蘋果" Price="50" FruitNum={FruitNum} id="3" onItemhandle={this.handleItem.bind(this)} />
-              <Hw22ShopCarItem Fruit="葡萄柚" Price="15" FruitNum={FruitNum} id="4" onItemhandle={this.handleItem.bind(this)} />
+              <Hw22ShopCarItem Fruit="橘子" Price="20" FruitNum={original} id="0" onItemhandle={this.handleItem.bind(this)} />
+              <Hw22ShopCarItem Fruit="蓮霧" Price="30" FruitNum={flow} id="1" onItemhandle={this.handleItem.bind(this)} />
+              <Hw22ShopCarItem Fruit="哈密瓜" Price="40" FruitNum={ha} id="2" onItemhandle={this.handleItem.bind(this)} />
+              <Hw22ShopCarItem Fruit="蘋果" Price="50" FruitNum={apple} id="3" onItemhandle={this.handleItem.bind(this)} />
+              <Hw22ShopCarItem Fruit="葡萄柚" Price="15" FruitNum={purple} id="4" onItemhandle={this.handleItem.bind(this)} />
             </div>
           </div>
           <div className="col-sm-4">
