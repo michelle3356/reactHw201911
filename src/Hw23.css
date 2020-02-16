@@ -1,0 +1,49 @@
+.HW23SunMoon{
+  min-height: 100vh;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.sun{
+  background-color: #d9ebff;
+}
+
+.moon{
+  color: #fff;
+  background-color: #061321;
+}
+
+.dashboard{
+  position: relative;
+  z-index: 1;
+}
+
+.icon{
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 0;
+  z-index: 0;
+  height: 200vh;
+  position: absolute;
+  display: inline-block;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.icon img{
+  display: block;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.HW23SunMoon .icon img:first-of-type {
+  margin-bottom: 300px;
+}
+
+.HW23SunMoon .icon>div {
+  position: relative;
+  height: 100vh;
+}
