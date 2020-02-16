@@ -19,6 +19,7 @@ export default class Hw22List extends Component {
   };
 
   handleDelOneClick = (e) => {
+    console.warn(this.props.FruitNum)
     this.props.onListhandle(this.props.FruitNum, this.props.id)
   };
 
@@ -28,9 +29,9 @@ export default class Hw22List extends Component {
 // render ： 如果 props 或 state 有改變時，它會重複觸發
 // 也就是說 render 會觸發「多次」
   render() {
-    const { Fruit, display, totalFruitPrice, FruitNum, id} = this.props;
+    const { Fruit, totalFruitPrice, FruitNum, id} = this.props;
     return (
-      <li key={id} className = {display}>
+      <li key={id}>
         {Fruit} * {FruitNum} = $ {totalFruitPrice}
         <button className="btn btn-sm btn-warning" 
         onClick={this.handleDelOneClick.bind(this)}>-1</button>

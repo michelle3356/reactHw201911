@@ -9,43 +9,22 @@ export default class Hw22ShopCarItem extends Component {
     this.state = {
       FruitNum: this.props.FruitNum,
       id: this.props.id,
-      original: this.props.FruitNum,
-      flow:this.props.FruitNum,
-      ha:this.props.FruitNum,
-      apple: this.props.FruitNum,
-      purple: this.props.FruitNum
     }
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    console.warn(this.props.id)
     let FruitNum = this.state.FruitNum
     let id = this.state.id
-    let original = this.state.original;
-    let flow = this.state.flow;
-    let ha = this.state.ha;
-    let apple = this.state.apple;
-    let purple = this.state.purple;
     this.setState({
       FruitNum: FruitNum,
-      id: id,
-      original: original,
-      flow: flow,
-      ha: ha,
-      apple: apple,
-      purple: purple
+      id: id
     });
-    this.props.onItemhandle(FruitNum , id, original, flow, ha, apple, purple);
+    this.props.onItemhandle(FruitNum , id);
   }
 
   handleChange = (e) => {
     this.setState({
-      FruitNum: e.target.value,
-      original: e.target.value,
-      flow: e.target.value,
-      ha: e.target.value,
-      apple: e.target.value,
-      purple: e.target.value
+      FruitNum: +e.target.value
     })
   }
   render() {

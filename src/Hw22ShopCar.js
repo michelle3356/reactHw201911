@@ -5,81 +5,76 @@ export default class Hw22ShopCar extends Component {
   constructor(props){
     super(props);
     this.state = {
-      Fruit: '',
-      price: '',
-      FruitNum: 0,
-      totalPrice: 0,
-      display: 'hide',
       totalFruitPrice: 0,
-      id: '',
-      original: '',
-      flow:'',
-      ha:'',
-      apple: '',
-      purple: ''
+      fruitNum: {
+        original: 0,
+        flow: 0,
+        ha: 0,
+        apple:  0,
+        purple:  0,
+      }
     }
   };
 
-  handleItem = (FruitNum, Price, id, original, flow, ha, apple, purple) => {
-    let finalFruitNum = parseInt(this.state.FruitNum) + parseInt(FruitNum);
-    let finaloriginal = parseInt(this.state.original) + parseInt(original);
-    let finalflow = parseInt(this.state.flow) + parseInt(flow);
-    let finalha = parseInt(this.state.ha) + parseInt(ha);
-    let finalapple = parseInt(this.state.apple) + parseInt(apple);
-    let finalpurple = parseInt(this.state.purple) + parseInt(purple);
-    let totalFruitPrice = Price * finalFruitNum;
-    let fid = id
+  // 更改水果數量
+  handleItem = (FruitNum, id) => {
+    let { fruitNum } = this.state;
+    fruitNum[id] = FruitNum + fruitNum[id];
     this.setState({
-      display: finalFruitNum ? 'show': 'hide',
-      FruitNum: finalFruitNum ? finalFruitNum : 0,
-      totalFruitPrice: totalFruitPrice,
-      id: fid,
-      original: finaloriginal,
-      flow: finalflow,
-      ha: finalha,
-      apple: finalapple,
-      purple: finalpurple
+      fruitNum: fruitNum
+    });
+  };
+
+  handleList = (id, FruitNum) => {
+    console.log(FruitNum)
+    let { fruitNum } = this.state;
+    fruitNum[id] = FruitNum - 1;
+    this.setState({
+      FruitNum: fruitNum
     })
   };
 
-  handleList = (FruitNum) => {
-    let delOne = FruitNum - 1;
+  handleClear = () => {
     this.setState({
-      FruitNum: delOne > 0 ? delOne : 0,
-      display: delOne > 0 ? 'show': 'hide'
-    })
-  };
-
-  handleClear = (FruitNum) => {
-    this.setState({
-      display: this.state.display==='show' ? 'hide' : 'show',
-      FruitNum: 0
+      fruitNum: {
+        original: 0,
+        flow: 0,
+        ha: 0,
+        apple:  0,
+        purple:  0,
+      }
     })
   }
 
   render() {
-    const { display, FruitNum, totalFruitPrice, id, original, flow, ha, apple, purple } = this.state;
+    const { fruitNum } = this.state;
     return (
       <div className="container">
         <div className="row">
           <div className="col-sm-8">
             <div className="row">
-              <Hw22ShopCarItem Fruit="橘子" Price="20" FruitNum={original} id="0" onItemhandle={this.handleItem.bind(this)} />
-              <Hw22ShopCarItem Fruit="蓮霧" Price="30" FruitNum={flow} id="1" onItemhandle={this.handleItem.bind(this)} />
-              <Hw22ShopCarItem Fruit="哈密瓜" Price="40" FruitNum={ha} id="2" onItemhandle={this.handleItem.bind(this)} />
-              <Hw22ShopCarItem Fruit="蘋果" Price="50" FruitNum={apple} id="3" onItemhandle={this.handleItem.bind(this)} />
-              <Hw22ShopCarItem Fruit="葡萄柚" Price="15" FruitNum={purple} id="4" onItemhandle={this.handleItem.bind(this)} />
+              <Hw22ShopCarItem Fruit="橘子" Price="20" FruitNum={fruitNum.original} id="original" onItemhandle={this.handleItem.bind(this)} />
+              <Hw22ShopCarItem Fruit="蓮霧" Price="30" FruitNum={fruitNum.flow} id="flow" onItemhandle={this.handleItem.bind(this)} />
+              <Hw22ShopCarItem Fruit="哈密瓜" Price="40" FruitNum={fruitNum.ha} id="ha" onItemhandle={this.handleItem.bind(this)} />
+              <Hw22ShopCarItem Fruit="蘋果" Price="50" FruitNum={fruitNum.apple} id="apple" onItemhandle={this.handleItem.bind(this)} />
+              <Hw22ShopCarItem Fruit="葡萄柚" Price="15" FruitNum={fruitNum.purple} id="purple" onItemhandle={this.handleItem.bind(this)} />
             </div>
           </div>
           <div className="col-sm-4">
             <ul>
-              <Hw22List Fruit="橘子" totalFruitPrice={totalFruitPrice}  id="0" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this, id)} onClearhandle={this.handleClear.bind(this)} />
-              <Hw22List Fruit="蓮霧" totalFruitPrice={totalFruitPrice}  id="1" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this, id)} onClearhandle={this.handleClear.bind(this)} />
-              <Hw22List Fruit="哈密瓜" totalFruitPrice={totalFruitPrice}  id="2" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this, id)} onClearhandle={this.handleClear.bind(this)} />
-              <Hw22List Fruit="蘋果" totalFruitPrice={totalFruitPrice}  id="3" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this, id)} onClearhandle={this.handleClear.bind(this)} />
-              <Hw22List Fruit="葡萄柚" totalFruitPrice={totalFruitPrice}  id="4" FruitNum={FruitNum} display={display} onListhandle={this.handleList.bind(this, id)} onClearhandle={this.handleClear.bind(this)} />
+              {fruitNum.original > 0 && <Hw22List Fruit="橘子" totalFruitPrice={20 * fruitNum.original}  id="original" FruitNum={fruitNum.original} onListhandle={this.handleList.bind(this, "original")} onClearhandle={this.handleClear.bind(this)} />}
+              {fruitNum.flow > 0 && <Hw22List Fruit="蓮霧" totalFruitPrice={30 * fruitNum.flow}  id="flow" FruitNum={fruitNum.flow} onListhandle={this.handleList.bind(this, "flow")} onClearhandle={this.handleClear.bind(this)} />}
+              {fruitNum.ha > 0 && <Hw22List Fruit="哈密瓜" totalFruitPrice={40 * fruitNum.ha}  id="ha" FruitNum={fruitNum.ha} onListhandle={this.handleList.bind(this, "ha")} onClearhandle={this.handleClear.bind(this)} />}
+              {fruitNum.apple > 0 && <Hw22List Fruit="蘋果" totalFruitPrice={50 * fruitNum.apple}  id="apple" FruitNum={fruitNum.apple} onListhandle={this.handleList.bind(this, "apple")} onClearhandle={this.handleClear.bind(this)} />}
+              {fruitNum.purple > 0 && <Hw22List Fruit="葡萄柚" totalFruitPrice={15 * fruitNum.purple}  id="purple" FruitNum={fruitNum.purple} onListhandle={this.handleList.bind(this, "purple")} onClearhandle={this.handleClear.bind(this)} />}
               <li>=======================</li>
-              <li>總計：${FruitNum * totalFruitPrice}</li>
+              <li>總計：${
+                20 * fruitNum.original +
+                30 * fruitNum.flow +
+                40 * fruitNum.ha +
+                50 * fruitNum.apple +
+                15 * fruitNum.purple
+              }</li>
             </ul>
           </div>
         </div>
