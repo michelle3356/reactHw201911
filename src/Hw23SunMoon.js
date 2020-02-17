@@ -11,7 +11,7 @@ export default class Hw23SunMoon extends Component {
 
   handleClick = (e) => {
     this.setState({
-      oneDay: 'sun' ? 'moon' : 'sun'
+      oneDay: this.state.oneDay === 'sun' ? 'moon' : 'sun'
     })
   }
   
