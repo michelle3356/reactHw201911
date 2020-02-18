@@ -26,7 +26,6 @@ export default class Hw22ShopCar extends Component {
   };
 
   handleList = (id, FruitNum) => {
-    console.log(FruitNum)
     let { fruitNum } = this.state;
     fruitNum[id] = FruitNum - 1;
     this.setState({
@@ -34,15 +33,11 @@ export default class Hw22ShopCar extends Component {
     })
   };
 
-  handleClear = () => {
+  handleClear = (id, FruitNum) => {
+    let { fruitNum } = this.state;
+    fruitNum[id] = 0
     this.setState({
-      fruitNum: {
-        original: 0,
-        flow: 0,
-        ha: 0,
-        apple:  0,
-        purple:  0,
-      }
+      FruitNum: fruitNum
     })
   }
 
@@ -62,11 +57,11 @@ export default class Hw22ShopCar extends Component {
           </div>
           <div className="col-sm-4">
             <ul>
-              {fruitNum.original > 0 && <Hw22List Fruit="橘子" totalFruitPrice={20 * fruitNum.original}  id="original" FruitNum={fruitNum.original} onListhandle={this.handleList.bind(this, "original")} onClearhandle={this.handleClear.bind(this)} />}
-              {fruitNum.flow > 0 && <Hw22List Fruit="蓮霧" totalFruitPrice={30 * fruitNum.flow}  id="flow" FruitNum={fruitNum.flow} onListhandle={this.handleList.bind(this, "flow")} onClearhandle={this.handleClear.bind(this)} />}
-              {fruitNum.ha > 0 && <Hw22List Fruit="哈密瓜" totalFruitPrice={40 * fruitNum.ha}  id="ha" FruitNum={fruitNum.ha} onListhandle={this.handleList.bind(this, "ha")} onClearhandle={this.handleClear.bind(this)} />}
-              {fruitNum.apple > 0 && <Hw22List Fruit="蘋果" totalFruitPrice={50 * fruitNum.apple}  id="apple" FruitNum={fruitNum.apple} onListhandle={this.handleList.bind(this, "apple")} onClearhandle={this.handleClear.bind(this)} />}
-              {fruitNum.purple > 0 && <Hw22List Fruit="葡萄柚" totalFruitPrice={15 * fruitNum.purple}  id="purple" FruitNum={fruitNum.purple} onListhandle={this.handleList.bind(this, "purple")} onClearhandle={this.handleClear.bind(this)} />}
+              {fruitNum.original > 0 && <Hw22List Fruit="橘子" totalFruitPrice={20 * fruitNum.original}  id="original" FruitNum={fruitNum.original} onListhandle={this.handleList.bind(this, "original")} onClearhandle={this.handleClear.bind(this, "original")} />}
+              {fruitNum.flow > 0 && <Hw22List Fruit="蓮霧" totalFruitPrice={30 * fruitNum.flow}  id="flow" FruitNum={fruitNum.flow} onListhandle={this.handleList.bind(this, "flow")} onClearhandle={this.handleClear.bind(this, "flow")} />}
+              {fruitNum.ha > 0 && <Hw22List Fruit="哈密瓜" totalFruitPrice={40 * fruitNum.ha}  id="ha" FruitNum={fruitNum.ha} onListhandle={this.handleList.bind(this, "ha")} onClearhandle={this.handleClear.bind(this, "ha")} />}
+              {fruitNum.apple > 0 && <Hw22List Fruit="蘋果" totalFruitPrice={50 * fruitNum.apple}  id="apple" FruitNum={fruitNum.apple} onListhandle={this.handleList.bind(this, "apple")} onClearhandle={this.handleClear.bind(this, "apple")} />}
+              {fruitNum.purple > 0 && <Hw22List Fruit="葡萄柚" totalFruitPrice={15 * fruitNum.purple}  id="purple" FruitNum={fruitNum.purple} onListhandle={this.handleList.bind(this, "purple")} onClearhandle={this.handleClear.bind(this, "purple")} />}
               <li>=======================</li>
               <li>總計：${
                 20 * fruitNum.original +

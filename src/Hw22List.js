@@ -19,7 +19,6 @@ export default class Hw22List extends Component {
   };
 
   handleDelOneClick = (e) => {
-    console.warn(this.props.FruitNum)
     this.props.onListhandle(this.props.FruitNum, this.props.id)
   };
 
