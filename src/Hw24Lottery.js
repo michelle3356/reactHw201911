@@ -19,7 +19,7 @@ const LotteryObj = {
             '41', '42', '43', '44', '45', '46', '47', '48', '49'],
 }
 
-//不重複的四個數字
+//不重複的六個號碼
 function lotteryResults(){
   var lottery = LotteryObj.Lottery
   //sort是用來排列，a - b得到正數 和 b - a 得到負數，因此用Math.random() - 0.5可得到正數或負數
@@ -28,6 +28,22 @@ function lotteryResults(){
   });
   return lottery.slice(0,6).join(",");
 };
+
+const inputObj = {
+  one:      {value: '',   isCorrect: false},
+  two:     {value: '',   isCorrect: false},
+  three:   {value: '', isCorrect: false},
+  four: {value: '',   isCorrect: false},
+  five: {value: '', isCorrect: false},
+  six: {value: '', isCorrect: false},
+}
+
+let inputNum = {}
+
+Object.keys(inputObj).forEach(key => {
+  // console.warn(inputNum[key]=0) 
+  // console.warn(key) 
+})
 
 // lottory.prototype = {
 //   options: {
@@ -39,25 +55,30 @@ function lotteryResults(){
 //[01,02,03,04.....,49]
 //然後我再對他設定可以創造出一百組不重複的數字
 //然後用一百組去對照我輸入的六位數字的陣列
-//再印出
-// 有對到的就變成黃色球球
+//再印出  有對到的就變成黃色球球
 
 export default class Hw24Lottery extends Component {
   constructor(props){
     super(props);
     this.state = ({
-      date: toDay()
+      date: toDay(),
+      inputNum: ''
     })
   };
   
   //產生一百組開獎號碼
   componentDidMount(){
+    // console.log(inputObj)
     var arr = [];
     for(var i = 0; i<100; i++){
       lotteryResults()
       arr.push(lotteryResults())
     };
     return arr;
+  }
+
+  handleInputValue = (key, inputValue) => {
+    console.warn(key, inputValue)
   }
 
     
@@ -73,7 +94,16 @@ export default class Hw24Lottery extends Component {
                 <span className="date">{date}</span>
               </div>
               <form>
-                <Hw24LotteryInput />
+                <div className="numberList">
+                  {Object.keys(inputObj).map(key => 
+                    <Hw24LotteryInput
+                      key={key}
+                      value={inputObj[key].value}
+                      isCorrect={inputObj[key].isCorrect}
+                      onInput={this.handleInputValue.bind(this, key)}
+                    />
+                  )}
+                </div>
                 <button className="btn btn-primary btn-block">輸入</button>
               </form>
             </div>
