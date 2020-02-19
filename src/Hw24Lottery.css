@@ -1,0 +1,42 @@
+.HW24Lottery{
+  background-color: #ffe4b2;
+  min-height: 100vh;
+  padding-top: 50px;
+  font-family: Noto Sans TC,sans-serif;
+}
+
+.block{
+  background-color: #fff;
+  padding: 20px;
+  max-width: 700px;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0,0,0,.3);
+}
+
+.open-date{
+  font-size: 1.5rem;
+}
+
+.HW24Lottery form{
+  margin: 15px;
+}
+
+.numberList{
+  display: flex;
+  justify-content: space-between;
+}
+
+.numberList .inputNum{
+  width: 5rem;
+  font-size: 4rem;
+  border: 1px solid #ccc;
+  font-weight: 700;
+  border-radius: 5px;
+  outline: none;
+}
+
+.header button{
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
