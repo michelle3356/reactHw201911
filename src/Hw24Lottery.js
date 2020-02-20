@@ -78,7 +78,8 @@ export default class Hw24Lottery extends Component {
   }
 
   handleInputValue = (key, inputValue) => {
-    console.warn(key, inputValue)
+    //這裡只接收得到子層傳進來的空字串和第一位數
+    // console.warn(key, inputValue)
   }
 
     
