@@ -41,6 +41,7 @@ const inputObj = {
 let inputNum = {}
 
 Object.keys(inputObj).forEach(key => {
+  inputNum[key]='';
   // console.warn(inputNum[key]=0) 
   // console.warn(key) 
 })
@@ -62,7 +63,7 @@ export default class Hw24Lottery extends Component {
     super(props);
     this.state = ({
       date: toDay(),
-      inputNum: ''
+      inputNum
     })
   };
   
@@ -76,15 +77,23 @@ export default class Hw24Lottery extends Component {
     };
     return arr;
   }
-
+// 1.接收子層傳上來的參數
+// 2.判斷子層傳上來的參數小於49且不重複
   handleInputValue = (key, inputValue) => {
-    //這裡只接收得到子層傳進來的空字串和第一位數
-    // console.warn(key, inputValue)
+    this.setState({
+      inputNum: {
+        ...this.state.inputNum,
+        [key]: this.state.inputNum[key]
+      }
+    })
+    console.log(this.state.inputNum)
+    
+    console.warn('父層的function：', key, inputValue)
   }
 
     
   render() {
-    const date = this.state.date;
+    const { inputNum, date } = this.state
     return (
       <div className="HW24Lottery">
         <div className="container">
