@@ -63,7 +63,8 @@ export default class Hw24Lottery extends Component {
     super(props);
     this.state = ({
       date: toDay(),
-      inputNum
+      inputNum,
+      able: 'disabled'
     })
   };
   
@@ -77,8 +78,9 @@ export default class Hw24Lottery extends Component {
     };
     return arr;
   }
-// 1.接收子層傳上來的參數
-// 2.判斷子層傳上來的參數小於49且不重複
+// 1.接收子層傳上來的屬性
+// 2.判斷子層傳上來的屬性小於49且不重複
+// 3.判斷成功則該屬性的isCorrect===true button取消disable
   handleInputValue = (key, inputValue) => {
     this.setState({
       inputNum: {
@@ -86,14 +88,15 @@ export default class Hw24Lottery extends Component {
         [key]: this.state.inputNum[key]
       }
     })
-    console.log(this.state.inputNum)
+    //這個console沒有東西
+    console.log(this.state.inputNum[key])
     
     console.warn('父層的function：', key, inputValue)
   }
 
     
   render() {
-    const { inputNum, date } = this.state
+    const { inputNum, date, able } = this.state
     return (
       <div className="HW24Lottery">
         <div className="container">
@@ -114,7 +117,7 @@ export default class Hw24Lottery extends Component {
                     />
                   )}
                 </div>
-                <button className="btn btn-primary btn-block">輸入</button>
+                <button className="btn btn-primary btn-block" disabled={able}>輸入</button>
               </form>
             </div>
           </div>
