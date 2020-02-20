@@ -29,21 +29,13 @@ function lotteryResults(){
   return lottery.slice(0,6).join(",");
 };
 
-const inputObj = {
-  one:      {value: '',   isCorrect: false},
-  two:     {value: '',   isCorrect: false},
-  three:   {value: '', isCorrect: false},
-  four: {value: '',   isCorrect: false},
-  five: {value: '', isCorrect: false},
-  six: {value: '', isCorrect: false},
-}
+const inputObj = {one: '', two: '', three: '', four: '', five: '', six: ''}
+
 
 let inputNum = {}
 
 Object.keys(inputObj).forEach(key => {
   inputNum[key]='';
-  // console.warn(inputNum[key]=0) 
-  // console.warn(key) 
 })
 
 // lottory.prototype = {
@@ -64,7 +56,7 @@ export default class Hw24Lottery extends Component {
     this.state = ({
       date: toDay(),
       inputNum,
-      able: 'disabled'
+      state: 'disabled'
     })
   };
   
@@ -76,8 +68,10 @@ export default class Hw24Lottery extends Component {
       lotteryResults()
       arr.push(lotteryResults())
     };
+    // console.warn(arr)
     return arr;
   }
+
 // 1.接收子層傳上來的屬性
 // 2.判斷子層傳上來的屬性小於49且不重複
 // 3.判斷成功則該屬性的isCorrect===true button取消disable
@@ -86,19 +80,23 @@ export default class Hw24Lottery extends Component {
       inputNum: {
         ...this.state.inputNum,
         [key]: inputValue
-      }
+      },
     })
-    //這個console沒有東西
-    console.log(this.state.inputNum)
-    
-    console.warn('父層的function：', key, inputValue)
+  }
+
+  handleSubmitValue = (e) => {
+    e.preventDefault();
+    let inputNum = this.state.inputNum;
+
+    console.warn(inputNum)
   }
 
     
   render() {
-    const { inputNum, date, able } = this.state
+    let { inputNum, date } = this.state
 
-    const lotteryList = Object.keys(inputNum).filter(key=>inputNum[key])
+    let lotteryList = Object.keys(inputNum).filter(key=>
+      inputNum[key])
     
     return (
       <div className="HW24Lottery">
@@ -109,23 +107,21 @@ export default class Hw24Lottery extends Component {
               <div className="open-date">開獎日期：
                 <span className="date">{date}</span>
               </div>
-              <form>
+              <form onSubmit={this.handleSubmitValue.bind(this)}>
                 <div className="numberList">
                   {Object.keys(inputObj).map(key => 
                     <Hw24LotteryInput
                       key={key}
                       value={inputObj[key].value}
-                      isCorrect={inputObj[key].isCorrect}
                       onInput={this.handleInputValue.bind(this, key)}
                     />
                   )}
                 </div>
-                <button className="btn btn-primary btn-block" disabled={able}>輸入</button>
+                <button className="btn btn-primary btn-block">輸入</button>
               </form>
             </div>
             <ul className="content">
-              <li>245</li>
-              <li>245</li>
+              <li>2e23rewfew</li>
               <li>{lotteryList}</li>
             </ul>
           </div>
