@@ -97,6 +97,10 @@ export default class Hw24Lottery extends Component {
     
   render() {
     const { inputNum, date, able } = this.state
+
+    const lotteryList = Object.keys(inputNum).filter(key=>inputNum[key])
+    
+
     return (
       <div className="HW24Lottery">
         <div className="container">
@@ -120,6 +124,11 @@ export default class Hw24Lottery extends Component {
                 <button className="btn btn-primary btn-block" disabled={able}>輸入</button>
               </form>
             </div>
+            <ul className="content">
+              <li>245</li>
+              <li>245</li>
+              <li>{lotteryList}</li>
+            </ul>
           </div>
         </div>
       </div>
