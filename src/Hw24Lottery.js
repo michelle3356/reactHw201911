@@ -85,11 +85,11 @@ export default class Hw24Lottery extends Component {
     this.setState({
       inputNum: {
         ...this.state.inputNum,
-        [key]: this.state.inputNum[key]
+        [key]: inputValue
       }
     })
     //這個console沒有東西
-    console.log(this.state.inputNum[key])
+    console.log(this.state.inputNum)
     
     console.warn('父層的function：', key, inputValue)
   }
@@ -100,7 +100,6 @@ export default class Hw24Lottery extends Component {
 
     const lotteryList = Object.keys(inputNum).filter(key=>inputNum[key])
     
-
     return (
       <div className="HW24Lottery">
         <div className="container">
