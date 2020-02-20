@@ -95,8 +95,10 @@ export default class Hw24Lottery extends Component {
   render() {
     let { inputNum, date } = this.state
 
-    let lotteryList = Object.keys(inputNum).filter(key=>
-      inputNum[key])
+    let lotteryList = Object.keys(inputNum).forEach(function(value) {
+      return inputNum[value]
+    })
+      
     
     return (
       <div className="HW24Lottery">
