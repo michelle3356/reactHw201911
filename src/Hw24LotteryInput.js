@@ -5,16 +5,23 @@ export default class Hw24LotteryInput extends Component {
   constructor(props){
     super(props);
     this.state = ({
+      inputValue: ''
     })
   };
   
+  //在這裡設定不可以輸入數字以外的數值
+  //不確定子層的判斷方式是否正確
   handleChange = (e) => {
-    this.props.onInput(e.target.value)
+    let inputValue = this.state.inputValue
+    this.setState({
+      inputValue: e.target.value.replace(/\D/g,'')
+    })
+    let value = (e.target.value).replace(/\D/g,'')
+    this.props.onInput(value)
   }
 
-
   render() {
-    const inputValue = this.props.inputValue;
+    let inputValue = this.state.inputValue;
     return (
         <input 
           type="text"
