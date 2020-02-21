@@ -56,7 +56,7 @@ export default class Hw24Lottery extends Component {
     this.state = ({
       date: toDay(),
       inputNum,
-      isClickable: 'true'
+      isClickable: 'false'
     })
   };
   
@@ -88,31 +88,30 @@ export default class Hw24Lottery extends Component {
     e.preventDefault();
     let inputNum = this.state.inputNum;
 
-    console.warn(inputNum)
+    // console.warn(inputNum)
   }
 
   handleClick = (e) => {
     let inputNum = this.state.inputNum;
     let canClick = Object.values(inputNum);
-    console.log(canClick)
-    for(let i =0; i < canClick.length; i++){
-      console.log(canClick[i])
-      if(canClick[i] && canClick[i]<49){
-        this.setState({
-          isClickable: "false"
-        })
-      }
-    }
   }
 
     
   render() {
     let { inputNum, date, isClickable } = this.state
-
-    let lotteryList = Object.keys(inputNum).forEach(function(value) {
-      console.log(inputNum[value])
-      return inputNum[value]
-    })
+    
+    let lotteryList = Object.values(inputNum);
+    // console.warn(lotteryList)
+    
+    let inputList = Object.keys(inputNum).map(key=>
+      inputNum[key]
+      );
+      console.warn(lotteryList)
+      var can =""
+    for(let i =0; i < lotteryList.length; i++){
+      console.log(lotteryList.length)
+      lotteryList[i] < 50 &&  lotteryList!="" ? can = true : can = false;
+    }
     
     return (
       <div className="HW24Lottery">
@@ -133,18 +132,15 @@ export default class Hw24Lottery extends Component {
                     />
                   )}
                 </div>
-                {Object.keys(inputNum).map(key=>
-                  inputNum[key]
-                )}
                 <button 
                 onClick={this.handleClick.bind(this)} 
                 className="btn btn-primary btn-block" 
-                disabled={inputNum > 49 && inputNum} >輸入</button>
+                disabled={can} >輸入</button>
               </form>
             </div>
             <ul className="content">
               <li>2e23rewfew</li>
-              <li></li>
+              <li>{lotteryList}</li>
             </ul>
           </div>
         </div>
