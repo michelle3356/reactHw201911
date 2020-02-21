@@ -56,7 +56,7 @@ export default class Hw24Lottery extends Component {
     this.state = ({
       date: toDay(),
       inputNum,
-      state: 'disabled'
+      isClickable: 'true'
     })
   };
   
@@ -91,14 +91,28 @@ export default class Hw24Lottery extends Component {
     console.warn(inputNum)
   }
 
+  handleClick = (e) => {
+    let inputNum = this.state.inputNum;
+    let canClick = Object.values(inputNum);
+    console.log(canClick)
+    for(let i =0; i < canClick.length; i++){
+      console.log(canClick[i])
+      if(canClick[i] && canClick[i]<49){
+        this.setState({
+          isClickable: "false"
+        })
+      }
+    }
+  }
+
     
   render() {
-    let { inputNum, date } = this.state
+    let { inputNum, date, isClickable } = this.state
 
     let lotteryList = Object.keys(inputNum).forEach(function(value) {
+      console.log(inputNum[value])
       return inputNum[value]
     })
-      
     
     return (
       <div className="HW24Lottery">
@@ -119,12 +133,12 @@ export default class Hw24Lottery extends Component {
                     />
                   )}
                 </div>
-                <button className="btn btn-primary btn-block">輸入</button>
+                <button onClick={this.handleClick.bind(this)} className="btn btn-primary btn-block" disabled={!isClickable} >輸入</button>
               </form>
             </div>
             <ul className="content">
               <li>2e23rewfew</li>
-              <li>{lotteryList}</li>
+              <li></li>
             </ul>
           </div>
         </div>
