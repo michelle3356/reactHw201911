@@ -133,7 +133,13 @@ export default class Hw24Lottery extends Component {
                     />
                   )}
                 </div>
-                <button onClick={this.handleClick.bind(this)} className="btn btn-primary btn-block" disabled={!isClickable} >輸入</button>
+                {Object.keys(inputNum).map(key=>
+                  inputNum[key]
+                )}
+                <button 
+                onClick={this.handleClick.bind(this)} 
+                className="btn btn-primary btn-block" 
+                disabled={inputNum > 49 && inputNum} >輸入</button>
               </form>
             </div>
             <ul className="content">
