@@ -101,16 +101,21 @@ export default class Hw24Lottery extends Component {
     let { inputNum, date, isClickable } = this.state
     
     let lotteryList = Object.values(inputNum);
-    // console.warn(lotteryList)
     
     let inputList = Object.keys(inputNum).map(key=>
       inputNum[key]
       );
-      console.warn(lotteryList)
-      var can =""
+      var can = "disabled";
+      var chacknum=[];
     for(let i =0; i < lotteryList.length; i++){
-      console.log(lotteryList.length)
-      lotteryList[i] < 50 &&  lotteryList!="" ? can = true : can = false;
+      if(lotteryList[i].length===2 && lotteryList[i] < 50 && lotteryList[i]!="" && chacknum[lotteryList[i]]!="T"){
+        can = "";
+        chacknum[lotteryList[i]]="T";
+      }
+      else{
+        can = "disabled";
+        break;
+      }
     }
     
     return (
