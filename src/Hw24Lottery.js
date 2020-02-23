@@ -29,15 +29,16 @@ function lotteryResults(){
   return lottery.slice(0,6).join(",");
 };
 
-const inputObj = {one: '', two: '', three: '', four: '', five: '', six: ''}
+const inputObj = {one: '', two: '', three: '', four: '', five: '', six: ''};
 
 
-let inputNum = {}
+let inputNum = {};
 
 Object.keys(inputObj).forEach(key => {
   inputNum[key]='';
 })
 
+let arr =[];
 // lottory.prototype = {
 //   options: {
 //    minNumber: '01',    // 預設最小選擇號碼
@@ -55,26 +56,22 @@ export default class Hw24Lottery extends Component {
     super(props);
     this.state = ({
       date: toDay(),
-      inputNum,
-      isClickable: 'false'
+      inputNum
     })
   };
   
   //產生一百組開獎號碼
   componentDidMount(){
-    // console.log(inputObj)
-    var arr = [];
     for(var i = 0; i<100; i++){
       lotteryResults()
       arr.push(lotteryResults())
     };
-    // console.warn(arr)
     return arr;
   }
 
 // 1.接收子層傳上來的屬性
-// 2.判斷子層傳上來的屬性小於49且不重複
-// 3.判斷成功則該屬性的isCorrect===true button取消disable
+// 2.判斷子層傳上來的屬性小於49且不重複  ((錯的,要在render判斷))
+// 3.判斷成功則該屬性的isCorrect===true button取消disable  ((錯的,要在render判斷))
   handleInputValue = (key, inputValue) => {
     this.setState({
       inputNum: {
@@ -87,37 +84,32 @@ export default class Hw24Lottery extends Component {
   handleSubmitValue = (e) => {
     e.preventDefault();
     let inputNum = this.state.inputNum;
-
-    // console.warn(inputNum)
-  }
-
-  handleClick = (e) => {
-    let inputNum = this.state.inputNum;
-    let canClick = Object.values(inputNum);
-  }
-
-    
-  render() {
-    let { inputNum, date, isClickable } = this.state
-    
     let lotteryList = Object.values(inputNum);
-    
+
     let inputList = Object.keys(inputNum).map(key=>
       inputNum[key]
       );
-      var can = "disabled";
-      var chacknum=[];
+      
+    console.log(arr)
+    console.warn(lotteryList)
+  }
+    
+  render() {
+    let { inputNum, date } = this.state
+
+    let lotteryList = Object.values(inputNum);
+    var can = "disabled";
+    var chackNum=[];
     for(let i =0; i < lotteryList.length; i++){
-      if(lotteryList[i].length===2 && lotteryList[i] < 50 && lotteryList[i]!="" && chacknum[lotteryList[i]]!="T"){
+      if(lotteryList[i].length===2 && lotteryList[i] < 50 && lotteryList[i]!=="" && chackNum[lotteryList[i]]!=="T"){
         can = "";
-        chacknum[lotteryList[i]]="T";
-      }
-      else{
+        chackNum[lotteryList[i]]="T";
+      }else{
         can = "disabled";
         break;
       }
     }
-    
+
     return (
       <div className="HW24Lottery">
         <div className="container">
@@ -138,13 +130,11 @@ export default class Hw24Lottery extends Component {
                   )}
                 </div>
                 <button 
-                onClick={this.handleClick.bind(this)} 
                 className="btn btn-primary btn-block" 
                 disabled={can} >輸入</button>
               </form>
             </div>
             <ul className="content">
-              <li>2e23rewfew</li>
               <li>{lotteryList}</li>
             </ul>
           </div>
