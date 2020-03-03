@@ -86,10 +86,14 @@ export default class Hw24Lottery extends Component {
     let inputNum = this.state.inputNum;
     let lotteryList = Object.values(inputNum);
 
-    let inputList = Object.keys(inputNum).map(key=>
-      inputNum[key]
-      );
-      
+    let resultList = arr.filter(function(element, index, array){
+      if(element === lotteryList){
+        console.log(element)
+      }else{
+        console.log('123')
+      }
+    })
+
     console.log(arr)
     console.warn(lotteryList)
   }
