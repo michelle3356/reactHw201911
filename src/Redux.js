@@ -12,12 +12,16 @@ export default class Redux extends Component {
 }
 
 // reducer
-function counter(state = 0, action) {
+function counter(state = 2, action) {
   switch (action.type) {
     case 'INCREMENT':
       return state + 1
     case 'DECREMENT':
       return state - 1
+    case 'DOUBLE':
+      return state * state
+    case 'RANDOM':
+      return Math.random() + state
     default:
       return state
   }
@@ -32,13 +36,15 @@ store.subscribe(() => {
 
 console.warn(store.getState()); // 0
 
-store.dispatch({type: 'INCREMENT'}); // + 1
-store.dispatch({type: 'INCREMENT'}); // + 1
-store.dispatch({type: 'INCREMENT'}); // + 1
+// store.dispatch({type: 'INCREMENT'}); // + 1
+// store.dispatch({type: 'INCREMENT'}); // + 1
+// store.dispatch({type: 'INCREMENT'}); // + 1
+store.dispatch({type: 'DOUBLE'}); // + 1
+store.dispatch({type: 'RANDOM'}); // + 1
 
 // console.warn(store.getState()); // 3
 
-store.dispatch({type: 'DECREMENT'}); // - 1
+// store.dispatch({type: 'DECREMENT'}); // - 1
 
 // console.warn(store.getState()); // 2
 
