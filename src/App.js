@@ -37,6 +37,7 @@ import Hw22ShopCar from './Hw22ShopCar';
 import Hw23SunMoon from './Hw23SunMoon';
 import Hw24Lottery from './Hw24Lottery';
 // import Homework from './Hw24Lottery';
+import ToDoList from './ToDoList';
 
 function App() {
   return (
@@ -73,6 +74,7 @@ function App() {
           <Route path="/Hw22ShopCar"><Hw22ShopCar /></Route>
           <Route path="/Hw23SunMoon"><Hw23SunMoon /></Route>
           <Route path="/Hw24Lottery"><Hw24Lottery /></Route>
+          <Route path="/ToDoList"><ToDoList /></Route>
           <Route path="/"><Home /></Route>
         </Switch>
       </BrowserRouter>
