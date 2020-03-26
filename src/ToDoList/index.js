@@ -4,7 +4,8 @@ import { createStore } from 'redux';
 //引入動作物件
 import { 
   setVisibilityFilter,
-  VisibilityFilters } from './action';
+  VisibilityFilters,
+  addTodo } from './action';
 
 
 
@@ -20,7 +21,8 @@ export default class ToDoList extends Component {
 
 let store = createStore(todoApp);
 console.log(store.getState());
-store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED))
+store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED));
+store.dispatch(addTodo('item test'))
 console.log(store.getState());
 
 
