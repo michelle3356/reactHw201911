@@ -38,6 +38,7 @@ import Hw23SunMoon from './Hw23SunMoon';
 import Hw24Lottery from './Hw24Lottery';
 // import Homework from './Hw24Lottery';
 import ToDoList from './ToDoList';
+import Udemy1 from './Udemy1';
 
 function App() {
   return (
@@ -75,6 +76,7 @@ function App() {
           <Route path="/Hw23SunMoon"><Hw23SunMoon /></Route>
           <Route path="/Hw24Lottery"><Hw24Lottery /></Route>
           <Route path="/ToDoList"><ToDoList /></Route>
+          <Route path="/Udemy1"><Udemy1 /></Route>
           <Route path="/"><Home /></Route>
         </Switch>
       </BrowserRouter>
